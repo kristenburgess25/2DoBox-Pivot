@@ -5,19 +5,13 @@ $(document).ready(function() {
   IdeaBox.getIdeaFromLocalStorage();
 });
 
+var votes = ['None', 'Low', 'Normal', 'High', 'Critical']
+
 function Idea (title, body, id, importance) {
   this.title = title;
   this.body = body;
   this.id = id || Date.now();
-  this.importance = importance || votes[3];
-}
-
-var votes = {
-  "1": 'Critical',
-  "2": 'High',
-  "3": 'Normal',
-  "4": 'Low',
-  "5": 'None'
+  this.importance = importance || votes[2];
 }
 
 var IdeaBox = {
@@ -90,18 +84,9 @@ var IdeaBox = {
     }
   })
   this.saveToLocalStorage();
-}
+},
 
-// upvoteTask: function(id) {
-//   debugger
-//   id = +id;
-//   this.ideasArray.forEach(function(ideas) {
-//     if (this.id === id && ) {
-//       this.importance =
-//         }
-//     });
-//   this.saveToLocalStorage;
-//   }
+
 
 }
 
@@ -117,6 +102,10 @@ $('.idea-list').on('click', '.delete-button', function() {
 
 $('.idea-list').on('click', '.up-arrow', function() {
   debugger
+  var importanceName = $(this).parent().attr('importance')
+  // var arrayNumber =
+  //set variable to number of item in array
+  //set new value to item in array plus 1
   var ideaId = $(this).parent().attr('id');
   IdeaBox.upvoteTask(ideaId);
 })
