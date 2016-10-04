@@ -5,11 +5,19 @@ $(document).ready(function() {
   IdeaBox.getIdeaFromLocalStorage();
 });
 
-function Idea (title, body, id, quality) {
+function Idea (title, body, id, importance) {
   this.title = title;
   this.body = body;
   this.id = id || Date.now();
-  this.quality = quality || 'swill';
+  this.importance = importance || votes[3];
+}
+
+var votes = {
+  "1": 'Critical',
+  "2": 'High',
+  "3": 'Normal',
+  "4": 'Low',
+  "5": 'None'
 }
 
 var IdeaBox = {
@@ -33,7 +41,7 @@ var IdeaBox = {
     <p contenteditable=true class="idea-body">${idea.body}</p>
     <button class="up-arrow"></button>
     <button class="down-arrow"></button>
-    <p class="idea-quality">quality: ${idea.quality}</p></div>`)
+    <p class="idea-importance">Importance: ${idea.importance}</p></div>`)
   },
 
   saveToLocalStorage: function() {
@@ -44,7 +52,7 @@ var IdeaBox = {
     var storedIdeasArray = JSON.parse(localStorage.getItem('ideasArray'));
     if (storedIdeasArray) {
       this.ideasArray = storedIdeasArray.map(function(idea) {
-        return new Idea(idea.title, idea.body, idea.id, idea.quality);
+        return new Idea(idea.title, idea.body, idea.id, idea.importance);
       });
     }
     this.renderStoredIdeasToPage();
@@ -59,7 +67,7 @@ var IdeaBox = {
   deleteIdeaFromPage: function(id) {
     id = +id;
     this.ideasArray = this.ideasArray.filter(function(ideas) {
-      return ideas.id !== id;
+      return this.id !== id;
     })
     this.saveToLocalStorage();
   },
@@ -67,16 +75,34 @@ var IdeaBox = {
   saveEditedTitle: function(id) {
    id = +id;
    this.ideasArray.forEach(function(ideas) {
-     debugger
-     if (ideas.id === id) {
-       debugger
-       ideas.title = $('.idea-title').text();
+     if (this.id === id) {
+       this.title = $('.idea-title').text();
      }
    })
    this.saveToLocalStorage();
  },
 
- saveEditedTask: function(id)
+ saveEditedTask: function(id) {
+  id = +id;
+  this.ideasArray.forEach(function(ideas) {
+    if (this.id === id) {
+      this.body = $('.idea-body').text();
+    }
+  })
+  this.saveToLocalStorage();
+}
+
+// upvoteTask: function(id) {
+//   debugger
+//   id = +id;
+//   this.ideasArray.forEach(function(ideas) {
+//     if (this.id === id && ) {
+//       this.importance =
+//         }
+//     });
+//   this.saveToLocalStorage;
+//   }
+
 }
 
 $('#save-btn').on('click', function() {
@@ -89,8 +115,30 @@ $('.idea-list').on('click', '.delete-button', function() {
   $(this).parent().remove();
 });
 
+$('.idea-list').on('click', '.up-arrow', function() {
+  debugger
+  var ideaId = $(this).parent().attr('id');
+  IdeaBox.upvoteTask(ideaId);
+})
+
 $('.idea-list').on('keyup', '.idea-title', function(idea) {
   var ideaId = $(this).parent().attr('id');
   IdeaBox.saveEditedTitle(ideaId);
-  debugger
-})
+});
+
+$('.idea-list').on('keyup', '.idea-body', function(idea) {
+  var ideaId = $(this).parent().attr('id');
+  IdeaBox.saveEditedTask(ideaId);
+});
+
+$('#search-input').on('keyup', function(){
+    var filter = $(this).val();
+    $('.container').each(function(){
+      if($(this).text().search(new RegExp(filter, 'i')) < 0) {
+        $(this).fadeOut();
+      }
+      else {
+        $(this).fadeIn();
+      }
+    });
+});
