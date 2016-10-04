@@ -4,8 +4,10 @@
   "description": "\"2DoBox paired project\"",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+   "start": "webpack-dev-server --hot --inline",
+   "build": "webpack",
+   "test": "mocha"
+ },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kristenburgess25/2DoBox-Pivot.git"
