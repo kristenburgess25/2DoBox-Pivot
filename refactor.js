@@ -6,7 +6,7 @@ $(document).ready(function() {
   IdeaBox.getIdeaFromLocalStorage();
 });
 
-var votesArray = ['None', 'Low', 'Normal', 'High', 'Critical']
+// var votesArray = ['None', 'Low', 'Normal', 'High', 'Critical']
 
 function Idea (title, body, id, importance) {
   this.title = title;
@@ -71,35 +71,35 @@ var IdeaBox = {
 
     saveEditedTitle: function(id) {
      id = +id;
-     this.ideasArray.forEach(function(ideas) {
+     this.ideasArray.forEach(function(ideas, newTitle) {
+       debugger
        if (ideas.id === id) {
-         ideas.title = $('.idea-title').text();
+         ideas.title = newTitle;
        }
      })
      this.saveToLocalStorage();
    },
 
-   saveEditedTask: function(id) {
-    id = +id;
-    this.ideasArray.forEach(function(ideas) {
-      if (ideas.id === id) {
-        ideas.body = $('.idea-body').text();
-      }
-    })
-    this.saveToLocalStorage();
-  },
-
+  //  saveEditedTask: function(id) {
+  //   id = +id;
+  //   this.ideasArray.forEach(function(ideas) {
+  //     if (ideas.id === id) {
+  //       ideas.body = $('.idea-body').text();
+  //     }
+  //   })
+  //   this.saveToLocalStorage();
+  // },
 
 }
 
-function clearInputFields() {
-  $titleInput.val('');
-  $bodyInput.val('');
-}
+// function clearInputFields() {
+//   $titleInput.val('');
+//   $bodyInput.val('');
+// }
 
 $('#save-btn').on('click', function() {
   IdeaBox.generateIdea();
-  clearInputFields();
+  // clearInputFields();
 });
 
 $('.idea-list').on('click', '.delete-button', function() {
@@ -109,8 +109,10 @@ $('.idea-list').on('click', '.delete-button', function() {
 });
 
 $('.idea-list').on('keyup', '.idea-title', function(idea) {
+  debugger
+  var newTitle = $(this).text();
   var ideaId = $(this).parent().attr('id');
-  IdeaBox.saveEditedTitle(ideaId);
+  IdeaBox.saveEditedTitle(ideaId, newTitle);
 });
 
 $('.idea-list').on('keyup', '.idea-body', function(idea) {
