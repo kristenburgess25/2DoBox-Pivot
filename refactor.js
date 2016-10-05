@@ -131,3 +131,15 @@ $('.idea-list').on('click', '.completed-task', function() {
 //   var ideaId = $(this).parent().attr('id');
 //   IdeaBox.saveEditedTask(ideaId);
 // });
+
+$('#search-input').on('keyup', function(){
+    var filter = $(this).val();
+    $('.container').each(function(){
+      if($(this).text().search(new RegExp(filter, 'i')) < 0) {
+        $(this).fadeOut();
+      }
+      else {
+        $(this).fadeIn();
+      }
+    });
+});
