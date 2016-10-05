@@ -6,7 +6,7 @@ $(document).ready(function() {
   IdeaBox.getIdeaFromLocalStorage();
 });
 
-// var votesArray = ['None', 'Low', 'Normal', 'High', 'Critical']
+var votesArray = ['None', 'Low', 'Normal', 'High', 'Critical']
 
 function Idea (title, body, id, importance) {
   this.title = title;
@@ -92,8 +92,14 @@ var IdeaBox = {
 
 }
 
+function clearInputFields() {
+  $titleInput.val('');
+  $bodyInput.val('');
+}
+
 $('#save-btn').on('click', function() {
   IdeaBox.generateIdea();
+  clearInputFields();
 });
 
 $('.idea-list').on('click', '.delete-button', function() {
