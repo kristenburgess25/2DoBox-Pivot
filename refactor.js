@@ -79,6 +79,15 @@ var IdeaBox = {
      this.saveToLocalStorage();
    },
 
+   saveEditedTask: function(id) {
+    id = +id;
+    this.ideasArray.forEach(function(ideas) {
+      if (ideas.id === id) {
+        ideas.body = $('.idea-body').text();
+      }
+    })
+    this.saveToLocalStorage();
+  },
 
 
 }
@@ -98,7 +107,7 @@ $('.idea-list').on('keyup', '.idea-title', function(idea) {
   IdeaBox.saveEditedTitle(ideaId);
 });
 
-// $('.idea-list').on('keyup', '.idea-body', function(idea) {
-//   var ideaId = $(this).parent().attr('id');
-//   IdeaBox.saveEditedTask(ideaId);
-// });
+$('.idea-list').on('keyup', '.idea-body', function(idea) {
+  var ideaId = $(this).parent().attr('id');
+  IdeaBox.saveEditedTask(ideaId);
+});
