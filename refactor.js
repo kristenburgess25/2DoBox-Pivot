@@ -34,8 +34,8 @@ var IdeaBox = {
     <button class="delete-button"></button>
     <p contenteditable=true class="idea-body">${idea.body}</p>
     <button class="up-arrow"></button>
-    <button class="down-arrow"></button>
-    <p class="idea-importance">Importance: ${idea.importance}</p></div>`)
+    <button class="down-arrow"></button><p class="idea-importance">Importance:</p>
+    <p class="idea-importance" "importance">${idea.importance}</p></div>`)
   },
 
   saveToLocalStorage: function() {
@@ -102,9 +102,14 @@ $('.idea-list').on('click', '.delete-button', function() {
 
 $('.idea-list').on('click', '.up-arrow', function() {
   debugger
-  var importanceName = $(this).parent().attr('importance')
-  // var arrayNumber =
-  //set variable to number of item in array
+  //return the value inside the importance class
+  function importanceName() {
+    return $(this).parent().attr('importance').text();
+  }
+
+  var importanceName = $(this).parent().attr('importance').text()
+  //use find method to find array number
+  var arrayNumber = votes.indexOf("Apple");
   //set new value to item in array plus 1
   var ideaId = $(this).parent().attr('id');
   IdeaBox.upvoteTask(ideaId);
