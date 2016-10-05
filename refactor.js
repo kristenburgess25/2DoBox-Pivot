@@ -13,10 +13,12 @@ function Idea (title, body, id, importance) {
   this.body = body;
   this.id = id || Date.now();
   this.importance = importance || 'Normal';
+  this.status = status || 'Incomplete';
 }
 
 var IdeaBox = {
   ideasArray: [],
+  completedTaskArray: [],
 
   generateIdea: function() {
     var idea = new Idea ($titleInput.val(), $bodyInput.val());
@@ -29,9 +31,13 @@ var IdeaBox = {
     this.ideasArray.push(idea);
   },
 
+  pushCompletedTask: function(idea) {
+    this.completedTaskArray.push(idea);
+  },
+
   renderIdeaToPage: function(idea) {
     $('.idea-list').prepend(`
-    <div id=${idea.id} class="container">
+    <div id=${idea.id} class="container incomplete">
     <h2 contenteditable=true class="idea-title">${idea.title}</h2>
     <button class="delete-button"></button>
     <p contenteditable=true class="idea-body">${idea.body}</p>
@@ -123,8 +129,9 @@ $('.idea-list').on('keyup', '.idea-body', function(idea) {
 });
 
 $('.idea-list').on('click', '.completed-task', function() {
- debugger;
- $(this).parent().css("background-color", "gray")
+ $(this).parent().css("background-color", "gray");
+ $(this).parent().removeClass('incomplete').addClass('completed');
+ IdeaBox.pushCompletedTask();
 });
 
 // $('.idea-list').on('keyup', '.idea-body', function(idea) {
