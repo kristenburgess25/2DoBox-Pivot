@@ -128,10 +128,12 @@ $('.idea-list').on('keyup', '.idea-body', function(idea) {
   IdeaBox.saveEditedTask(ideaId, newBody);
 });
 
-$('.idea-list').on('click', '.completed-task', function() {
+$('.idea-list').on('click', '.completed-task', function(e) {
+  console.log(e)
+  debugger;
  $(this).parent().css("background-color", "gray");
  $(this).parent().removeClass('incomplete').addClass('completed');
- IdeaBox.pushCompletedTask();
+ IdeaBox.pushCompletedTask(idea);
 });
 
 // $('.idea-list').on('keyup', '.idea-body', function(idea) {
