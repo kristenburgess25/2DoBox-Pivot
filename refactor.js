@@ -69,9 +69,9 @@ var IdeaBox = {
     this.saveToLocalStorage();
   },
 
-    saveEditedTitle: function(id) {
+    saveEditedTitle: function(id, newTitle) {
      id = +id;
-     this.ideasArray.forEach(function(ideas, newTitle) {
+     this.ideasArray.forEach(function(ideas) {
        debugger
        if (ideas.id === id) {
          ideas.title = newTitle;
