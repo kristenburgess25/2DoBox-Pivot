@@ -35,6 +35,7 @@ var IdeaBox = {
     <h2 contenteditable=true class="idea-title">${idea.title}</h2>
     <button class="delete-button"></button>
     <p contenteditable=true class="idea-body">${idea.body}</p>
+    <button class="completed-task">Completed Task</button>
     <button class="up-arrow"></button>
     <button class="down-arrow"></button>
     <p class="idea-quality">quality: ${idea.importance}</p>
@@ -97,6 +98,11 @@ $('.idea-list').on('keyup', '.idea-title', function(idea) {
   debugger
   var ideaId = $(this).parent().attr('id');
   IdeaBox.saveEditedTitle(ideaId);
+});
+
+$('.idea-list').on('click', '.completed-task', function() {
+ debugger;
+ $(this).parent().css("background-color", "gray")
 });
 
 // $('.idea-list').on('keyup', '.idea-body', function(idea) {
