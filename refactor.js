@@ -6,13 +6,13 @@ $(document).ready(function() {
   IdeaBox.getIdeaFromLocalStorage();
 });
 
-// var votesArray = ['None', 'Low', 'Normal', 'High', 'Critical']
+var votes = ['None', 'Low', 'Normal', 'High', 'Critical']
 
 function Idea (title, body, id, importance) {
   this.title = title;
   this.body = body;
   this.id = id || Date.now();
-  this.importance = importance || 'Normal';
+  this.importance = importance || votes[2];
 }
 
 var IdeaBox = {
@@ -38,7 +38,8 @@ var IdeaBox = {
     <button class="completed-task">Completed Task</button>
     <button class="up-arrow"></button>
     <button class="down-arrow"></button>
-    <p class="idea-quality">quality: ${idea.importance}</p>
+    <p class="idea-importance" >Importance:</p>
+    <p class="idea-importance importance-value">${idea.importance}</p>
     </div>`)
   },
 
@@ -73,7 +74,6 @@ var IdeaBox = {
     saveEditedTitle: function(id, newTitle) {
      id = +id;
      this.ideasArray.forEach(function(ideas) {
-       debugger
        if (ideas.id === id) {
          ideas.title = newTitle;
        }
@@ -84,9 +84,18 @@ var IdeaBox = {
    saveEditedTask: function(id, newBody) {
     id = +id;
     this.ideasArray.forEach(function(ideas) {
-      debugger
       if (ideas.id === id) {
         ideas.body = newBody;
+      }
+    })
+    this.saveToLocalStorage();
+  },
+
+  saveImportanceValue: function(id, newImportance) {
+    id = +id;
+    this.ideasArray.forEach(function(ideas) {
+      if (ideas.id === id) {
+        ideas.importance = newimportance;
       }
     })
     this.saveToLocalStorage();
@@ -120,6 +129,15 @@ $('.idea-list').on('keyup', '.idea-body', function(idea) {
   var newBody = $(this).text();
   var ideaId = $(this).parent().attr('id');
   IdeaBox.saveEditedTask(ideaId, newBody);
+});
+
+$('.idea-list').on('click', '.up-arrow', function(idea) {
+  debugger
+  var currentImportance = $(this).siblings('.importance-value').text();
+  var arrayNumber = votes.indexOf(currentImportance);
+  var increaseVote = arrayNumber++
+  var newImportance = votes[arrayNumber];
+  IdeaBox.saveImportanceValue(ideaId, newImportance);
 });
 
 $('.idea-list').on('click', '.completed-task', function() {
