@@ -8,15 +8,17 @@ $(document).ready(function() {
 
 var votes = ['None', 'Low', 'Normal', 'High', 'Critical']
 
-function Idea (title, body, id, importance) {
+function Idea (title, body, id, importance, status) {
   this.title = title;
   this.body = body;
   this.id = id || Date.now();
   this.importance = importance || votes[2];
+  this.status = status || "incomplete";
 }
 
 var IdeaBox = {
   ideasArray: [],
+  // completedTaskArray: [],
 
   generateIdea: function() {
     var idea = new Idea ($titleInput.val(), $bodyInput.val());
@@ -28,6 +30,10 @@ var IdeaBox = {
   saveIdeaInArray: function(idea) {
     this.ideasArray.push(idea);
   },
+
+//   pushCompletedTask: function(idea) {
+// this.completedTaskArray.push(idea);
+// },
 
   renderIdeaToPage: function(idea) {
     $('.idea-list').prepend(`
@@ -51,7 +57,7 @@ var IdeaBox = {
     var storedIdeasArray = JSON.parse(localStorage.getItem('ideasArray'));
     if (storedIdeasArray) {
       this.ideasArray = storedIdeasArray.map(function(idea) {
-        return new Idea(idea.title, idea.body, idea.id, idea.importance);
+        return new Idea(idea.title, idea.body, idea.id, idea.importance, idea.status);
       });
     }
     this.renderStoredIdeasToPage();
@@ -101,6 +107,16 @@ var IdeaBox = {
     this.saveToLocalStorage();
   },
 
+  saveStatus: function(id, newStatus) {
+    id = +id;
+    this.ideasArray.forEach(function(ideas) {
+      if (ideas.id === id) {
+        ideas.status = newStatus;
+      }
+    })
+    this.saveToLocalStorage();
+  }
+
 }
 
 function clearInputFields() {
@@ -132,7 +148,6 @@ $('.idea-list').on('keyup', '.idea-body', function(idea) {
 });
 
 $('.idea-list').on('click', '.up-arrow', function(idea) {
-  debugger
   var currentImportance = $(this).siblings('.importance-value').text();
   var arrayNumber = votes.indexOf(currentImportance);
   arrayNumber++;
@@ -140,9 +155,14 @@ $('.idea-list').on('click', '.up-arrow', function(idea) {
   IdeaBox.saveImportanceValue(ideaId, newImportance);
 });
 
-$('.idea-list').on('click', '.completed-task', function() {
- debugger;
- $(this).parent().css("background-color", "gray")
+$('.idea-list').on('click', '.completed-task', function(idea) {
+debugger
+var ideaId = $(this).parent().attr('id');
+var newStatus = "completed";
+$(this).parent().css("background-color", "gray");
+$(this).parent().removeClass('incomplete').addClass('completed');
+IdeaBox.saveStatus(ideaId, newStatus);
+// IdeaBox.pushCompletedTask(ideaId, status);
 });
 
 // $('.idea-list').on('keyup', '.idea-body', function(idea) {
