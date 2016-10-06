@@ -3,7 +3,7 @@ var $titleInput = $('#title-input')
 var $bodyInput = $('#body-input')
 
 $(document).ready(function() {
-  IdeaBox.getIdeaFromLocalStorage();
+  IdeaBox.getTasksFromLocalStorage();
 });
 
 function clearInputFields() {
@@ -20,13 +20,27 @@ function Idea (title, body, id, importance) {
   this.importance = importance || votes[2];
 }
 
+function renderToPage(idea) {
+  $('.idea-list').prepend(`
+  <div id=${idea.id} class="container">
+  <h2 contenteditable=true class="idea-title">${idea.title}</h2>
+  <button class="delete-button"></button>
+  <p contenteditable=true class="idea-body">${idea.body}</p>
+  <button class="completed-task">Completed Task</button>
+  <button class="up-arrow"></button>
+  <button class="down-arrow"></button>
+  <p class="idea-importance" >Importance:</p>
+  <p class="idea-importance importance-value">${idea.importance}</p>
+  </div>`);
+}
+
 var IdeaBox = {
   ideasArray: [],
 
   generateIdea: function() {
     var idea = new Idea ($titleInput.val(), $bodyInput.val());
     this.saveIdeaInArray(idea);
-    this.renderIdeaToPage(idea);
+    renderToPage(idea);
     this.saveToLocalStorage();
   },
 
@@ -34,50 +48,32 @@ var IdeaBox = {
     this.ideasArray.push(idea);
   },
 
-  renderIdeaToPage: function(idea) {
-    $('.idea-list').prepend(`
-    <div id=${idea.id} class="container">
-    <h2 contenteditable=true class="idea-title">${idea.title}</h2>
-    <button class="delete-button"></button>
-    <p contenteditable=true class="idea-body">${idea.body}</p>
-    <button class="completed-task">Completed Task</button>
-    <button class="up-arrow"></button>
-    <button class="down-arrow"></button>
-    <p class="idea-importance" >Importance:</p>
-    <p class="idea-importance importance-value">${idea.importance}</p>
-    </div>`)
-  },
-
   saveToLocalStorage: function() {
     localStorage.setItem('ideasArray', JSON.stringify(this.ideasArray));
   },
 
-  getIdeaFromLocalStorage: function() {
+  getTasksFromLocalStorage: function() {
     var storedIdeasArray = JSON.parse(localStorage.getItem('ideasArray'));
     if (storedIdeasArray) {
       this.ideasArray = storedIdeasArray.map(function(idea) {
         return new Idea(idea.title, idea.body, idea.id, idea.importance);
       });
     }
-    this.renderStoredIdeasToPage();
+    this.renderStoredTasksToPage();
   },
 
-  renderStoredIdeasToPage: function() {
+  renderStoredTasksToPage: function() {
     var smallArray = this.ideasArray.slice(0, 10);
     smallArray.forEach(function(idea) {
-      IdeaBox.renderIdeaToPage(idea);
+      renderToPage(idea);
     })
   },
 
-  showMoreIdeas: function() {
-    var increaseArray = this.ideasArray.slice(0, 15)
-    increaseArray.forEach(function(idea) {
-      IdeaBox.renderIdeaToPage(idea);
-    })
-  },
-
-  // renderStoredIdeasToPage: function() {
-  //   this.ideasArray.forEach(function(idea) {
+//for loop to 10 in array and only show those on page
+//function to increase the amount of tasks shown
+  // showMoreTasks: function() {
+  //   var increaseArray = this.ideasArray.slice(11, 15)
+  //   increaseArray.forEach(function(idea) {
   //     IdeaBox.renderIdeaToPage(idea);
   //   })
   // },
@@ -210,4 +206,8 @@ $('.importance-button').on('click', function() {
       $(this).fadeIn();
     }
   });
+})
+
+$('.show-more-tasks').on('click', function() {
+  IdeaBox.showMoreTasks();
 })
