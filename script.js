@@ -73,7 +73,9 @@ var IdeaBox = {
 
   renderStoredIdeasToPage: function() {
     this.ideasArray.forEach(function(idea) {
-      IdeaBox.renderIdeaToPage(idea);
+      if (idea.status != "complete") {
+        IdeaBox.renderIdeaToPage(idea);
+      }
     });
   },
 
