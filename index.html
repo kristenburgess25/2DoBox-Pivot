@@ -1,30 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>idea box</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="reset.css" media="screen" title="styles" charset="utf-8">
-    <link rel="stylesheet" href="styles.css" media="screen" title="styles" charset="utf-8">
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="lib/CSS/reset.css">
+    <title>Idea Box</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="lib/CSS/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=true">
   </head>
+    <body>
+  <header>
+    <h1><span>idea</span>box</h1>
+    <input id="title-input" type="text" placeholder="Title" />
+    <input id="body-input" type="text" placeholder="Task" />
+    <button id="save-btn" type="button">save</button>
+  </header>
 
-  <body>
-    <header class="hero">
-      <h1 class="hero-title"><span class="teal-h1">idea</span><span class="grey-h1">box</span></h1>
-
-      <input type="text" class="title-input" placeholder="Title">
-
-      <textarea type="text" class="body-input" placeholder="Body"></textarea>
-
-      <button class="save" disabled = 'true'>Save</button>
-    </header>
-
-    <input class="search-field" type="text" placeholder="Search">
-    <section class="idea-list"></section>
-
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
-    <script src="main.bundle.js" charset="utf-8"></script>
+    <input id="search-input" type="text" placeholder="Search" />
+    <div class="idea-list"></div>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
