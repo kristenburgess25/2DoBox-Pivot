@@ -55,7 +55,6 @@ var IdeaBox = {
     <p class="idea-importance importance-value">${idea.importance}</p>
     <p class="idea-status">${idea.status}</p>
     </div>`);
-    // this.hideCompletedTasks(idea);
   },
 
   saveToLocalStorage: function() {
@@ -74,9 +73,7 @@ var IdeaBox = {
 
   renderStoredIdeasToPage: function() {
     this.ideasArray.forEach(function(idea) {
-      // if (idea.status != "complete") {
         IdeaBox.renderIdeaToPage(idea);
-      // }
     });
   },
 
@@ -121,13 +118,11 @@ var IdeaBox = {
   saveIdeaInNewArray: function(idea) {
     this.completedIdeasArray.push(idea);
   },
-  //when user clicks mark as complete button. it will push to a new array
-  //the old object with be deleted from old array
+
   markComplete: function(id, newStatus) {
     id = +id;
     this.ideasArray.forEach(function(ideas) {
       if (ideas.id === id) {
-        debugger
         ideas.status = newStatus;
         IdeaBox.saveIdeaInNewArray(ideas);
       }
@@ -219,6 +214,9 @@ $('.importance-button').on('click', function() {
   $('.container').each(function(){
     if($(this).children().text().search(new RegExp(filter, 'i')) < 0) {
       $(this).fadeOut();
-    };
+    }
+    else {
+      $(this).fadeIn();
+    }
   });
 });
