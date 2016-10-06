@@ -63,10 +63,24 @@ var IdeaBox = {
   },
 
   renderStoredIdeasToPage: function() {
-    this.ideasArray.forEach(function(idea) {
+    var smallArray = this.ideasArray.slice(0, 10);
+    smallArray.forEach(function(idea) {
       IdeaBox.renderIdeaToPage(idea);
     })
   },
+
+  showMoreIdeas: function() {
+    var increaseArray = this.ideasArray.slice(0, 15)
+    increaseArray.forEach(function(idea) {
+      IdeaBox.renderIdeaToPage(idea);
+    })
+  },
+
+  // renderStoredIdeasToPage: function() {
+  //   this.ideasArray.forEach(function(idea) {
+  //     IdeaBox.renderIdeaToPage(idea);
+  //   })
+  // },
 
   deleteIdeaFromPage: function(id) {
     id = +id;
