@@ -147,14 +147,31 @@ var TaskBox = {
 
 };
 
+function enableSubmit() {
+ if ($bodyInput.val().length > 0 && $titleInput.val().length > 0) {
+     $("#save-btn").attr("disabled", false);
+ } else {
+   $("#save-btn").attr("disabled", true);
+ }
+}
+
+$titleInput.on('keyup', function () {
+  enableSubmit();
+});
+
 $bodyInput.on('keyup', function() {
   var characterCount = ($bodyInput.val().length);
+    enableSubmit();
   $('.character-count').text(characterCount);
-}),
+  if (characterCount > 120) {
+    $("#save-btn").attr("disabled", true);
+  }
+});
 
 $('#save-btn').on('click', function() {
   TaskBox.generateTask();
   clearInputFields();
+  $("#save-btn").attr("disabled", true);
 });
 
 $('.show-completed-button').on('click', function() {
