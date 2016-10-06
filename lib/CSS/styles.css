@@ -70,6 +70,10 @@ header {
   font-size: 18px;
 }
 
+.idea-status {
+  visibility: hidden;
+}
+
 .container {
   margin:auto;
   width: 500px;
