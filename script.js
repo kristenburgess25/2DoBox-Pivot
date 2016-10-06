@@ -46,6 +46,7 @@ var IdeaBox = {
     <button class="down-arrow"></button>
     <p class="idea-importance" >Importance:</p>
     <p class="idea-importance importance-value">${idea.importance}</p>
+    <p class="idea-status">${idea.status}</p>
     </div>`)
   },
 
