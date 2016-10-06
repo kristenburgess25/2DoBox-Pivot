@@ -97,7 +97,6 @@ var IdeaBox = {
   },
 
   saveImportanceValue: function(id, newImportance) {
-    // debugger
     id = +id;
     this.ideasArray.forEach(function(ideas) {
       if (ideas.id === id) {
@@ -135,17 +134,34 @@ $('.idea-list').on('keyup', '.idea-body', function(idea) {
 
 $('.idea-list').on('click', '.up-arrow', function(idea) {
   var ideaId = $(this).parent().attr('id');
-  var currentImportance = $(this).siblings('.importance-value').text();
-  var arrayNumber = votes.indexOf(currentImportance);
-  arrayNumber++;
-  var newImportance = votes[arrayNumber];
-  updateImportance(this, newImportance);
-  // $(this).siblings('.importance-value').text(newImportance);
+  updateImportance(this, increaseImportance(this));
+  var newImportance = $(this).siblings('.importance-value').text()
+  IdeaBox.saveImportanceValue(ideaId, newImportance);
+});
+
+$('.idea-list').on('click', '.down-arrow', function(idea) {
+  var ideaId = $(this).parent().attr('id');
+  updateImportance(this, decreaseImportance(this));
+  var newImportance = $(this).siblings('.importance-value').text()
   IdeaBox.saveImportanceValue(ideaId, newImportance);
 });
 
 function updateImportance(e, value) {
   $(e).siblings('.importance-value').text(value);
+}
+
+function decreaseImportance(e) {
+  var currentImportance = $(e).siblings('.importance-value').text();
+  var arrayNumber = votes.indexOf(currentImportance);
+  arrayNumber--;
+  return votes[arrayNumber];
+}
+
+function increaseImportance(e) {
+  var currentImportance = $(e).siblings('.importance-value').text();
+  var arrayNumber = votes.indexOf(currentImportance);
+  arrayNumber++;
+  return votes[arrayNumber];
 }
 
 $('.idea-list').on('click', '.completed-task', function() {
