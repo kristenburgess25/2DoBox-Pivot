@@ -59,6 +59,7 @@ var IdeaBox = {
 
   saveToLocalStorage: function() {
     localStorage.setItem('ideasArray', JSON.stringify(this.ideasArray));
+    localStorage.setItem('completedIdeasArray', JSON.stringify(this.completedIdeasArray));
   },
 
   getIdeaFromLocalStorage: function() {
