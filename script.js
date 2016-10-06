@@ -18,7 +18,6 @@ function Idea (title, body, id, importance, status) {
 
 var IdeaBox = {
   ideasArray: [],
-  // completedTaskArray: [],
 
   generateIdea: function() {
     var idea = new Idea ($titleInput.val(), $bodyInput.val());
@@ -30,10 +29,6 @@ var IdeaBox = {
   saveIdeaInArray: function(idea) {
     this.ideasArray.push(idea);
   },
-
-//   pushCompletedTask: function(idea) {
-// this.completedTaskArray.push(idea);
-// },
 
   renderIdeaToPage: function(idea) {
     $('.idea-list').prepend(`
@@ -159,11 +154,10 @@ $('.idea-list').on('click', '.up-arrow', function(idea) {
 $('.idea-list').on('click', '.completed-task', function(idea) {
 debugger
 var ideaId = $(this).parent().attr('id');
-var newStatus = "completed";
+var newStatus = "complete";
 $(this).parent().css("background-color", "gray");
-$(this).parent().removeClass('incomplete').addClass('completed');
+$(this).parent().removeClass('incomplete').addClass('complete');
 IdeaBox.saveStatus(ideaId, newStatus);
-// IdeaBox.pushCompletedTask(ideaId, status);
 });
 
 // $('.idea-list').on('keyup', '.idea-body', function(idea) {
