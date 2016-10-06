@@ -43,6 +43,10 @@ var TaskBox = {
     }
   },
 
+  // hideTaskFromPage: function() {
+  //
+  // },
+
   renderTaskToPage: function(task) {
     $('.task-list').prepend(`
     <div id=${task.id} class="container">
@@ -80,7 +84,8 @@ var TaskBox = {
   },
 
   renderStoredTasksToPage: function() {
-    this.tasksArray.forEach(function(task) {
+    var smallArray = this.tasksArray.slice(-10, this.tasksArray.length);
+    smallArray.forEach(function(task) {
         TaskBox.renderTaskToPage(task);
     });
   },
@@ -170,6 +175,9 @@ $bodyInput.on('keyup', function() {
 
 $('#save-btn').on('click', function() {
   TaskBox.generateTask();
+  if ($('.task-list').children().length > 10) {
+    $('.task-list').children(":last-child").hide();
+  }
   clearInputFields();
   $("#save-btn").attr("disabled", true);
 });
