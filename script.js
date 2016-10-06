@@ -6,6 +6,11 @@ $(document).ready(function() {
   IdeaBox.getIdeaFromLocalStorage();
 });
 
+function clearInputFields() {
+  $titleInput.val('');
+  $bodyInput.val('');
+}
+
 var votes = ['None', 'Low', 'Normal', 'High', 'Critical']
 
 function Idea (title, body, id, importance) {
@@ -95,7 +100,7 @@ var IdeaBox = {
     id = +id;
     this.ideasArray.forEach(function(ideas) {
       if (ideas.id === id) {
-        ideas.importance = newimportance;
+        ideas.importance = newImportance;
       }
     })
     this.saveToLocalStorage();
@@ -103,10 +108,6 @@ var IdeaBox = {
 
 }
 
-function clearInputFields() {
-  $titleInput.val('');
-  $bodyInput.val('');
-}
 
 $('#save-btn').on('click', function() {
   IdeaBox.generateIdea();
@@ -132,13 +133,36 @@ $('.idea-list').on('keyup', '.idea-body', function(idea) {
 });
 
 $('.idea-list').on('click', '.up-arrow', function(idea) {
-  debugger
-  var currentImportance = $(this).siblings('.importance-value').text();
-  var arrayNumber = votes.indexOf(currentImportance);
-  arrayNumber++;
-  var newImportance = votes[arrayNumber];
+  var ideaId = $(this).parent().attr('id');
+  updateImportance(this, increaseImportance(this));
+  var newImportance = $(this).siblings('.importance-value').text()
   IdeaBox.saveImportanceValue(ideaId, newImportance);
 });
+
+$('.idea-list').on('click', '.down-arrow', function(idea) {
+  var ideaId = $(this).parent().attr('id');
+  updateImportance(this, decreaseImportance(this));
+  var newImportance = $(this).siblings('.importance-value').text()
+  IdeaBox.saveImportanceValue(ideaId, newImportance);
+});
+
+function updateImportance(e, value) {
+  $(e).siblings('.importance-value').text(value);
+}
+
+function decreaseImportance(e) {
+  var currentImportance = $(e).siblings('.importance-value').text();
+  var arrayNumber = votes.indexOf(currentImportance);
+  arrayNumber--;
+  return votes[arrayNumber];
+}
+
+function increaseImportance(e) {
+  var currentImportance = $(e).siblings('.importance-value').text();
+  var arrayNumber = votes.indexOf(currentImportance);
+  arrayNumber++;
+  return votes[arrayNumber];
+}
 
 $('.idea-list').on('click', '.completed-task', function() {
  debugger;
