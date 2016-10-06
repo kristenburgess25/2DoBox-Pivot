@@ -86,7 +86,7 @@ header {
 }
 
 .delete-button {
-  background-image: url("images/delete.svg");
+  background-image: url("../../Images/delete.svg");
   background-color: #FFFFFF;
   border: none;
   width: 20px;
@@ -95,7 +95,7 @@ header {
 }
 
 .delete-button:hover {
-  background-image: url("images/delete-hover.svg");
+  background-image: url("../../Images/delete-hover.svg");
   background-color: #FFFFFF;
   border: none;
   width: 20px;
@@ -121,7 +121,7 @@ header {
 }
 
 .up-arrow {
-  background-image: url("../Images/upvote.svg");
+  background-image: url("../../Images/upvote.svg");
   background-color: #FFFFFF;
   border: none;
   width: 20px;
@@ -130,7 +130,7 @@ header {
 }
 
 .up-arrow:hover {
-  background-image: url("../Images/upvote-hover.svg");
+  background-image: url("../../Images/upvote-hover.svg");
   background-color: #FFFFFF;
   border: none;
   width: 20px;
@@ -139,7 +139,7 @@ header {
 }
 
 .down-arrow {
-  background-image: url("../Images/downvote.svg");
+  background-image: url("../../Images/downvote.svg");
   background-color: #FFFFFF;
   border: none;
   width: 20px;
@@ -148,7 +148,7 @@ header {
 }
 
 .down-arrow:hover {
-  background-image: url("../Images/downvote-hover.svg");
+  background-image: url("../../Images/downvote-hover.svg");
   background-color: #FFFFFF;
   border: none;
   width: 20px;
