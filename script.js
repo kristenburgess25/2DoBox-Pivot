@@ -3,8 +3,8 @@ var $titleInput = $('#title-input');
 var $bodyInput = $('#body-input');
 
 $(document).ready(function() {
-  IdeaBox.getIdeaFromLocalStorage();
-  IdeaBox.renderStoredIdeasToPage();
+  TaskBox.getTaskFromLocalStorage();
+  TaskBox.renderStoredTasksToPage();
 });
 
 function clearInputFields() {
@@ -14,7 +14,7 @@ function clearInputFields() {
 
 var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
 
-function Idea (title, body, id, importance, status) {
+function Task (title, body, id, importance, status) {
   this.title = title;
   this.body = body;
   this.id = id || Date.now();
@@ -22,88 +22,88 @@ function Idea (title, body, id, importance, status) {
   this.status = status || "incomplete";
 }
 
-var IdeaBox = {
-  ideasArray: [],
-  completedIdeasArray: [],
+var TaskBox = {
+  tasksArray: [],
+  completedTasksArray: [],
 
-  generateIdea: function() {
-    var idea = new Idea ($titleInput.val(), $bodyInput.val());
-    this.saveIdeaInArray(idea);
-    this.renderIdeaToPage(idea);
+  generateTask: function() {
+    var task = new Task ($titleInput.val(), $bodyInput.val());
+    this.saveTaskInArray(task);
+    this.renderTaskToPage(task);
     this.saveToLocalStorage();
   },
 
-  saveIdeaInArray: function(idea) {
-    this.ideasArray.push(idea);
+  saveTaskInArray: function(task) {
+    this.tasksArray.push(task);
   },
 
-  hideCompletedTasks: function(idea) {
-    if(idea.status === "completed") {
+  hideCompletedTasks: function(task) {
+    if(task.status === "completed") {
       $(this).parent().attr("visibility", "hidden");
     }
   },
 
-  renderIdeaToPage: function(idea) {
-    $('.idea-list').prepend(`
-    <div id=${idea.id} class="container">
-    <h2 contenteditable=true class="idea-title">${idea.title}</h2>
+  renderTaskToPage: function(task) {
+    $('.task-list').prepend(`
+    <div id=${task.id} class="container">
+    <h2 contenteditable=true class="task-title">${task.title}</h2>
     <button class="delete-button"></button>
-    <p contenteditable=true class="idea-body">${idea.body}</p>
+    <p contenteditable=true class="task-body">${task.body}</p>
     <button class="completed-task">Completed Task</button>
     <button class="up-arrow"></button>
     <button class="down-arrow"></button>
-    <p class="idea-importance" >Importance:</p>
-    <p class="idea-importance importance-value">${idea.importance}</p>
-    <p class="idea-status">${idea.status}</p>
+    <p class="task-importance" >Importance:</p>
+    <p class="task-importance importance-value">${task.importance}</p>
+    <p class="task-status">${task.status}</p>
     </div>`);
   },
 
   saveToLocalStorage: function() {
-    localStorage.setItem('ideasArray', JSON.stringify(this.ideasArray));
-    localStorage.setItem('completedIdeasArray', JSON.stringify(this.completedIdeasArray));
+    localStorage.setItem('tasksArray', JSON.stringify(this.tasksArray));
+    localStorage.setItem('completedTasksArray', JSON.stringify(this.completedTasksArray));
   },
 
 
-  getIdeaFromLocalStorage: function() {
-    var storedIdeasArray = JSON.parse(localStorage.getItem('ideasArray'));
-    var storedCompletedTasks = JSON.parse(localStorage.getItem('completedIdeasArray'));
-    if (storedIdeasArray) {
-      this.ideasArray = storedIdeasArray.map(function(idea) {
-        return new Idea(idea.title, idea.body, idea.id, idea.importance, idea.status);
+  getTaskFromLocalStorage: function() {
+    var storedTasksArray = JSON.parse(localStorage.getItem('tasksArray'));
+    var storedCompletedTasks = JSON.parse(localStorage.getItem('completedTasksArray'));
+    if (storedTasksArray) {
+      this.tasksArray = storedTasksArray.map(function(task) {
+        return new Task(task.title, task.body, task.id, task.importance, task.status);
       });
     }
     if (storedCompletedTasks) {
-      this.completedIdeasArray = storedCompletedTasks.map(function(idea) {
-        return new Idea(idea.title, idea.body, idea.id, idea.importance, idea.status);
+      this.completedTasksArray = storedCompletedTasks.map(function(task) {
+        return new Task(task.title, task.body, task.id, task.importance, task.status);
       });
     }
   },
 
-  renderStoredIdeasToPage: function() {
-    this.ideasArray.forEach(function(idea) {
-        IdeaBox.renderIdeaToPage(idea);
+  renderStoredTasksToPage: function() {
+    this.tasksArray.forEach(function(task) {
+        TaskBox.renderTaskToPage(task);
     });
   },
 
   renderCompletedTasksToPage: function() {
-    this.completedIdeasArray.forEach(function(idea) {
-      IdeaBox.renderIdeaToPage(idea);
+    this.completedTasksArray.forEach(function(task) {
+      TaskBox.renderTaskToPage(task);
     });
   },
 
-  deleteIdeaFromPage: function(id) {
+  deleteTaskFromPage: function(id) {
     id = +id;
-    this.ideasArray = this.ideasArray.filter(function(ideas) {
-      return ideas.id !== id;
+    this.tasksArray = this.tasksArray.filter(function(tasks) {
+      return tasks.id !== id;
     });
     this.saveToLocalStorage();
   },
 
     saveEditedTitle: function(id, newTitle) {
      id = +id;
-     this.ideasArray.forEach(function(ideas) {
-       if (ideas.id === id) {
-         ideas.title = newTitle;
+     this.tasksArray.forEach(function(tasks) {
+       if (tasks.id === id) {
+         tasks.title = newTitle;
        }
      });
      this.saveToLocalStorage();
@@ -111,9 +111,9 @@ var IdeaBox = {
 
    saveEditedTask: function(id, newBody) {
     id = +id;
-    this.ideasArray.forEach(function(ideas) {
-      if (ideas.id === id) {
-        ideas.body = newBody;
+    this.tasksArray.forEach(function(tasks) {
+      if (tasks.id === id) {
+        tasks.body = newBody;
       }
     });
     this.saveToLocalStorage();
@@ -121,27 +121,27 @@ var IdeaBox = {
 
   saveImportanceValue: function(id, newImportance) {
     id = +id;
-    this.ideasArray.forEach(function(ideas) {
-      if (ideas.id === id) {
-        ideas.importance = newImportance;
+    this.tasksArray.forEach(function(tasks) {
+      if (tasks.id === id) {
+        tasks.importance = newImportance;
       }
     });
     this.saveToLocalStorage();
   },
 
-  saveIdeaInNewArray: function(idea) {
-    this.completedIdeasArray.push(idea);
+  saveTaskInNewArray: function(task) {
+    this.completedTasksArray.push(task);
   },
 
   markComplete: function(id, newStatus) {
     id = +id;
-    this.ideasArray.forEach(function(ideas) {
-      if (ideas.id === id) {
-        ideas.status = newStatus;
-        IdeaBox.saveIdeaInNewArray(ideas);
+    this.tasksArray.forEach(function(tasks) {
+      if (tasks.id === id) {
+        tasks.status = newStatus;
+        TaskBox.saveTaskInNewArray(tasks);
       }
     });
-    this.deleteIdeaFromPage(id);
+    this.deleteTaskFromPage(id);
     this.saveToLocalStorage();
   }
 
@@ -149,52 +149,52 @@ var IdeaBox = {
 
 
 $('#save-btn').on('click', function() {
-  IdeaBox.generateIdea();
+  TaskBox.generateTask();
   clearInputFields();
 });
 
 $('.show-completed-button').on('click', function() {
-  IdeaBox.renderCompletedTasksToPage();
+  TaskBox.renderCompletedTasksToPage();
 });
 
-$('.idea-list').on('click', '.delete-button', function() {
-  var ideaId = $(this).parent().attr('id');
-  IdeaBox.deleteIdeaFromPage(ideaId);
+$('.task-list').on('click', '.delete-button', function() {
+  var taskId = $(this).parent().attr('id');
+  TaskBox.deleteTaskFromPage(taskId);
   $(this).parent().remove();
 });
 
-$('.idea-list').on('keyup', '.idea-title', function(idea) {
+$('.task-list').on('keyup', '.task-title', function(task) {
   var newTitle = $(this).text();
-  var ideaId = $(this).parent().attr('id');
-  IdeaBox.saveEditedTitle(ideaId, newTitle);
+  var taskId = $(this).parent().attr('id');
+  TaskBox.saveEditedTitle(taskId, newTitle);
 });
 
-$('.idea-list').on('keyup', '.idea-body', function(idea) {
+$('.task-list').on('keyup', '.task-body', function(task) {
   var newBody = $(this).text();
-  var ideaId = $(this).parent().attr('id');
-  IdeaBox.saveEditedTask(ideaId, newBody);
+  var taskId = $(this).parent().attr('id');
+  TaskBox.saveEditedTask(taskId, newBody);
 });
 
-$('.idea-list').on('click', '.completed-task', function(idea) {
-var ideaId = $(this).parent().attr('id');
+$('.task-list').on('click', '.completed-task', function(task) {
+var taskId = $(this).parent().attr('id');
 var newStatus = "complete";
 $(this).parent().css("background-color", "gray");
 $(this).parent().removeClass('incomplete').addClass('complete');
-IdeaBox.markComplete(ideaId, newStatus);
+TaskBox.markComplete(taskId, newStatus);
 });
 
-$('.idea-list').on('click', '.up-arrow', function(idea) {
-  var ideaId = $(this).parent().attr('id');
+$('.task-list').on('click', '.up-arrow', function(task) {
+  var taskId = $(this).parent().attr('id');
   updateImportance(this, increaseImportance(this));
   var newImportance = $(this).siblings('.importance-value').text();
-  IdeaBox.saveImportanceValue(ideaId, newImportance);
+  TaskBox.saveImportanceValue(taskId, newImportance);
 });
 
-$('.idea-list').on('click', '.down-arrow', function(idea) {
-  var ideaId = $(this).parent().attr('id');
+$('.task-list').on('click', '.down-arrow', function(task) {
+  var taskId = $(this).parent().attr('id');
   updateImportance(this, decreaseImportance(this));
   var newImportance = $(this).siblings('.importance-value').text();
-  IdeaBox.saveImportanceValue(ideaId, newImportance);
+  TaskBox.saveImportanceValue(taskId, newImportance);
 });
 
 function updateImportance(e, value) {
