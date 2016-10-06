@@ -147,6 +147,10 @@ var TaskBox = {
 
 };
 
+$bodyInput.on('keyup', function() {
+  var characterCount = ($bodyInput.val().length);
+  $('.character-count').text(characterCount);
+}),
 
 $('#save-btn').on('click', function() {
   TaskBox.generateTask();
