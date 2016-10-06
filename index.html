@@ -9,16 +9,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=true">
   </head>
     <body>
-  <header>
-    <h1><span>idea</span>box</h1>
-    <input id="title-input" type="text" placeholder="Title" />
-    <input id="body-input" type="text" placeholder="Task" />
-    <button id="save-btn" type="button">save</button>
-  </header>
+      <header>
+        <h1><span>idea</span>box</h1>
+        <input id="title-input" type="text" placeholder="Title" />
+        <input id="body-input" type="text" placeholder="Task" />
+        <button id="save-btn" type="button">save</button>
+      </header>
 
-    <input id="search-input" type="text" placeholder="Search" />
-    <div class="idea-list"></div>
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="script.js"></script>
+      <input id="search-input" type="text" placeholder="Search" />
+
+      <section>
+        <button class="importance-button">None</button>
+        <button class="importance-button">Low</button>
+        <button class="importance-button">Normal</button>
+        <button class="importance-button">High</button>
+        <button class="importance-button">Critical</button>
+      </section>
+
+      <div class="idea-list"></div>
+      <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+      <script src="script.js"></script>
   </body>
 </html>

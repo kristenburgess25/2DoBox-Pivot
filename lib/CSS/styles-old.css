@@ -110,20 +110,20 @@ article {
   right: 2%;
   float: right;
   display: inline-block;
-  background: url(./Images/delete.svg) no-repeat;
+  background: url(../../Images/delete.svg) no-repeat;
   border: none;
   height: 20px;
   width: 20px;
 }
 
 .delete-idea:hover {
-  background: url(./Images/delete-hover.svg) no-repeat;
+  background: url(../../Images/delete-hover.svg) no-repeat;
   border: none;
   z-index: 99;
 }
 
 .upvote {
-  background: url(./Images/upvote.svg) no-repeat;
+  background: url(../../Images/upvote.svg) no-repeat;
   border: none;
   position: absolute;
   bottom: 10%;
@@ -133,13 +133,13 @@ article {
 }
 
 .upvote:hover {
-  background: url(./Images/upvote-hover.svg) no-repeat;
+  background: url(../../Images/upvote-hover.svg) no-repeat;
   border: none;
   z-index: 99;
 }
 
 .downvote {
-  background: url(./Images/downvote.svg) no-repeat;
+  background: url(../../Images/downvote.svg) no-repeat;
   border: none;
   height: 20px;
   width: 20px;
@@ -150,7 +150,7 @@ article {
 }
 
 .downvote:hover {
-  background: url(./Images/downvote-hover.svg) no-repeat;
+  background: url(../../Images/downvote-hover.svg) no-repeat;
   border: none;
   z-index: 99;
 }
