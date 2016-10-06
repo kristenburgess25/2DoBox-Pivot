@@ -1,6 +1,6 @@
 
-var $titleInput = $('#title-input')
-var $bodyInput = $('#body-input')
+var $titleInput = $('#title-input');
+var $bodyInput = $('#body-input');
 
 $(document).ready(function() {
   IdeaBox.getIdeaFromLocalStorage();
@@ -11,7 +11,7 @@ function clearInputFields() {
   $bodyInput.val('');
 }
 
-var votes = ['None', 'Low', 'Normal', 'High', 'Critical']
+var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
 
 function Idea (title, body, id, importance, status) {
   this.title = title;
@@ -35,11 +35,11 @@ var IdeaBox = {
     this.ideasArray.push(idea);
   },
 
-  // hideCompletedTasks: function(idea) {
-  //   if(idea.status = "completed") {
-  //     $(this).parent().attr("visibility", "hidden")
-  //   }
-  // },
+  hideCompletedTasks: function(idea) {
+    if(idea.status === "completed") {
+      $(this).parent().attr("visibility", "hidden");
+    }
+  },
 
   renderIdeaToPage: function(idea) {
     $('.idea-list').prepend(`
@@ -54,7 +54,7 @@ var IdeaBox = {
     <p class="idea-importance importance-value">${idea.importance}</p>
     <p class="idea-status">${idea.status}</p>
     </div>`);
-    // hideCompletedTasks();
+    this.hideCompletedTasks(idea);
   },
 
   saveToLocalStorage: function() {
@@ -74,14 +74,14 @@ var IdeaBox = {
   renderStoredIdeasToPage: function() {
     this.ideasArray.forEach(function(idea) {
       IdeaBox.renderIdeaToPage(idea);
-    })
+    });
   },
 
   deleteIdeaFromPage: function(id) {
     id = +id;
     this.ideasArray = this.ideasArray.filter(function(ideas) {
       return ideas.id !== id;
-    })
+    });
     this.saveToLocalStorage();
   },
 
@@ -91,7 +91,7 @@ var IdeaBox = {
        if (ideas.id === id) {
          ideas.title = newTitle;
        }
-     })
+     });
      this.saveToLocalStorage();
    },
 
@@ -101,7 +101,7 @@ var IdeaBox = {
       if (ideas.id === id) {
         ideas.body = newBody;
       }
-    })
+    });
     this.saveToLocalStorage();
   },
 
@@ -111,7 +111,7 @@ var IdeaBox = {
       if (ideas.id === id) {
         ideas.importance = newImportance;
       }
-    })
+    });
     this.saveToLocalStorage();
   },
 
@@ -121,11 +121,11 @@ var IdeaBox = {
       if (ideas.id === id) {
         ideas.status = newStatus;
       }
-    })
+    });
     this.saveToLocalStorage();
   }
 
-}
+};
 
 
 $('#save-btn').on('click', function() {
@@ -152,12 +152,12 @@ $('.idea-list').on('keyup', '.idea-body', function(idea) {
 });
 
 $('.idea-list').on('click', '.completed-task', function(idea) {
-debugger
 var ideaId = $(this).parent().attr('id');
 var newStatus = "complete";
 $(this).parent().css("background-color", "gray");
 $(this).parent().removeClass('incomplete').addClass('complete');
 IdeaBox.markComplete(ideaId, newStatus);
+});
 
 $('.idea-list').on('click', '.up-arrow', function(idea) {
   var ideaId = $(this).parent().attr('id');
@@ -169,7 +169,7 @@ $('.idea-list').on('click', '.up-arrow', function(idea) {
 $('.idea-list').on('click', '.down-arrow', function(idea) {
   var ideaId = $(this).parent().attr('id');
   updateImportance(this, decreaseImportance(this));
-  var newImportance = $(this).siblings('.importance-value').text()
+  var newImportance = $(this).siblings('.importance-value').text();
   IdeaBox.saveImportanceValue(ideaId, newImportance);
 });
 
@@ -218,4 +218,4 @@ $('.importance-button').on('click', function() {
       $(this).fadeIn();
     }
   });
-})
+});
