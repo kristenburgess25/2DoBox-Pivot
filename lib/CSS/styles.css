@@ -58,7 +58,7 @@ header {
   color: #FFFFFF;
 }
 
-.ideaList {
+.taskList {
   width: 100vw;
 }
 
@@ -70,7 +70,7 @@ header {
   font-size: 18px;
 }
 
-.idea-status {
+.task-status {
   visibility: hidden;
 }
 
@@ -81,7 +81,7 @@ header {
   border-bottom: solid 2px #D1D3D4;
 }
 
-.idea-title {
+.task-title {
   color: #6D6E71;
   font-size: 18px;
   text-align: left;
@@ -107,7 +107,7 @@ header {
   float: right;
 }
 
-.idea-body {
+.task-body {
   color: #939598;
   font-size: 14px;
   text-align: left;
@@ -116,7 +116,7 @@ header {
   text-wrap:normal;
 }
 
-.idea-importance {
+.task-importance {
   color: #6D6E71;
   font-size: 12px;
   display: inline-block;
