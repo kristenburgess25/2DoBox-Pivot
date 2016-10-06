@@ -170,6 +170,8 @@ $bodyInput.on('keyup', function() {
   $('.character-count').text(characterCount);
   if (characterCount > 120) {
     $("#save-btn").attr("disabled", true);
+  } else {
+    $("#save-btn").attr("disabled", false);
   }
 });
 
@@ -179,6 +181,7 @@ $('#save-btn').on('click', function() {
     $('.task-list').children(":last-child").hide();
   }
   clearInputFields();
+  $('.character-count').text(0);
   $("#save-btn").attr("disabled", true);
 });
 
