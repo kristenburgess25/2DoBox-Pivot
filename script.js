@@ -23,6 +23,7 @@ function Idea (title, body, id, importance, status) {
 
 var IdeaBox = {
   ideasArray: [],
+  completedIdeasArray: [],
 
   generateIdea: function() {
     var idea = new Idea ($titleInput.val(), $bodyInput.val());
@@ -54,7 +55,7 @@ var IdeaBox = {
     <p class="idea-importance importance-value">${idea.importance}</p>
     <p class="idea-status">${idea.status}</p>
     </div>`);
-    this.hideCompletedTasks(idea);
+    // this.hideCompletedTasks(idea);
   },
 
   saveToLocalStorage: function() {
@@ -73,9 +74,9 @@ var IdeaBox = {
 
   renderStoredIdeasToPage: function() {
     this.ideasArray.forEach(function(idea) {
-      if (idea.status != "complete") {
+      // if (idea.status != "complete") {
         IdeaBox.renderIdeaToPage(idea);
-      }
+      // }
     });
   },
 
@@ -117,13 +118,21 @@ var IdeaBox = {
     this.saveToLocalStorage();
   },
 
+  saveIdeaInNewArray: function(idea) {
+    this.completedIdeasArray.push(idea);
+  },
+  //when user clicks mark as complete button. it will push to a new array
+  //the old object with be deleted from old array
   markComplete: function(id, newStatus) {
     id = +id;
     this.ideasArray.forEach(function(ideas) {
       if (ideas.id === id) {
+        debugger
         ideas.status = newStatus;
+        IdeaBox.saveIdeaInNewArray(ideas);
       }
     });
+    this.deleteIdeaFromPage(id);
     this.saveToLocalStorage();
   }
 
@@ -193,11 +202,6 @@ function increaseImportance(e) {
   return votes[arrayNumber];
 }
 
-// $('.idea-list').on('keyup', '.idea-body', function(idea) {
-//   var ideaId = $(this).parent().attr('id');
-//   IdeaBox.saveEditedTask(ideaId);
-// });
-
 $('#search-input').on('keyup', function(){
     var filter = $(this).val();
     $('.container').each(function(){
@@ -215,9 +219,6 @@ $('.importance-button').on('click', function() {
   $('.container').each(function(){
     if($(this).children().text().search(new RegExp(filter, 'i')) < 0) {
       $(this).fadeOut();
-    }
-    else {
-      $(this).fadeIn();
-    }
+    };
   });
 });
