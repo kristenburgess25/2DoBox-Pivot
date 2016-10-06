@@ -4,6 +4,7 @@ var $bodyInput = $('#body-input');
 
 $(document).ready(function() {
   IdeaBox.getIdeaFromLocalStorage();
+  IdeaBox.renderStoredIdeasToPage();
 });
 
 function clearInputFields() {
@@ -59,21 +60,34 @@ var IdeaBox = {
 
   saveToLocalStorage: function() {
     localStorage.setItem('ideasArray', JSON.stringify(this.ideasArray));
+    localStorage.setItem('completedIdeasArray', JSON.stringify(this.completedIdeasArray));
   },
+
 
   getIdeaFromLocalStorage: function() {
     var storedIdeasArray = JSON.parse(localStorage.getItem('ideasArray'));
+    var storedCompletedTasks = JSON.parse(localStorage.getItem('completedIdeasArray'));
     if (storedIdeasArray) {
       this.ideasArray = storedIdeasArray.map(function(idea) {
         return new Idea(idea.title, idea.body, idea.id, idea.importance, idea.status);
       });
     }
-    this.renderStoredIdeasToPage();
+    if (storedCompletedTasks) {
+      this.completedIdeasArray = storedCompletedTasks.map(function(idea) {
+        return new Idea(idea.title, idea.body, idea.id, idea.importance, idea.status);
+      });
+    }
   },
 
   renderStoredIdeasToPage: function() {
     this.ideasArray.forEach(function(idea) {
         IdeaBox.renderIdeaToPage(idea);
+    });
+  },
+
+  renderCompletedTasksToPage: function() {
+    this.completedIdeasArray.forEach(function(idea) {
+      IdeaBox.renderIdeaToPage(idea);
     });
   },
 
@@ -137,6 +151,10 @@ var IdeaBox = {
 $('#save-btn').on('click', function() {
   IdeaBox.generateIdea();
   clearInputFields();
+});
+
+$('.show-completed-button').on('click', function() {
+  IdeaBox.renderCompletedTasksToPage();
 });
 
 $('.idea-list').on('click', '.delete-button', function() {
