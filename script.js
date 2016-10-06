@@ -90,6 +90,12 @@ var TaskBox = {
     });
   },
 
+  // renderMoreTasks: function() {
+  //   tasksArray.forEach(function(task) {
+  //     TaskBox.renderTaskToPage(task);
+  //   })
+  // },
+
   renderCompletedTasksToPage: function() {
     this.completedTasksArray.forEach(function(task) {
       TaskBox.renderTaskToPage(task);
@@ -174,6 +180,11 @@ $bodyInput.on('keyup', function() {
     $("#save-btn").attr("disabled", false);
   }
 });
+
+$('.show-more-button').on('click', function() {
+  debugger;
+  $('.task-list').children(":hidden").show();
+})
 
 $('#save-btn').on('click', function() {
   TaskBox.generateTask();
