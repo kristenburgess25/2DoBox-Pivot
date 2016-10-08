@@ -1,3 +1,5 @@
+require('');
+require('');
 
 var $titleInput = $('#title-input');
 var $bodyInput = $('#body-input');
