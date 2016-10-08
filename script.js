@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 var $titleInput = $('#title-input');
 var $bodyInput = $('#body-input');
 
