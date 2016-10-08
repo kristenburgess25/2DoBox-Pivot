@@ -1,5 +1,7 @@
-require('');
-require('');
+require('/lib/Sass/reset.scss');
+require('/lib/Sass/styles.scss');
+
+var $ = require('jquery');
 
 var $titleInput = $('#title-input');
 var $bodyInput = $('#body-input');
