@@ -1,8 +1,8 @@
 {
   "name": "2-do-box-pivot",
   "version": "1.0.0",
-  "description": "\"2DoBox paired project\"",
-  "main": "script.js",
+  "description": "2DoBox paired project",
+  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --hot --inline",
     "build": "webpack",
