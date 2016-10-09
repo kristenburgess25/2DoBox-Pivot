@@ -130,6 +130,8 @@ margin: 30px auto 10px;
 
 button.show-completed-button {
   display: block;
+  margin: 15px auto;
+  width: 175px;
 }
 
 button.importance-button {
@@ -193,6 +195,7 @@ width: 525px;
 
 .up-arrow {
   background: url('../../Images/upvote.svg') no-repeat;
+  margin-left: 10px;
 
   &:hover {
     background: url('../../Images/upvote-hover.svg') no-repeat;
@@ -219,6 +222,10 @@ width: 525px;
 
 .task-importance {
   display: inline;
+}
+
+.task-status {
+  visibility: hidden;
 }
 
 .show-more-button {
