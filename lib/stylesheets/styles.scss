@@ -137,7 +137,7 @@ button.show-completed-button {
 button.importance-button {
   background-color: $medium-grey;
   color: $white;
-  margin-left: 5px;
+  margin: 10px 0 0 5px;
 
   &:hover{
     background-color: $secondary-pink;
@@ -156,7 +156,6 @@ button.importance-button {
 .container {
 background-color: #FFF;
 box-shadow: 0 5px 24px rgba(0, 0, 0, 0.2);
-height: 165px;
 margin: 0 auto 30px;
 width: 525px;
 }
@@ -238,5 +237,74 @@ width: 525px;
 
   &:hover {
     box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 565px) {
+  #tool-bar {
+    width: 450px;
+  }
+
+  #search-input {
+    width: 50%;
+  }
+
+  .container {
+    width: 450px;
+  }
+
+}
+
+@media screen and (max-width: 490px) {
+  .input-fields {
+    width: 320px;
+  }
+
+  #character-counter {
+    width: 320px;
+  }
+
+  #tool-bar {
+    width: 320px;
+  }
+
+  .container {
+    width: 320px;
+  }
+
+  .task-text {
+    padding: 30px 20px 0;
+  }
+
+  .completed-task {
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+
+  .up-arrow {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  h1 {
+    font-size: 35px;
+  }
+
+  .input-fields {
+    width: 290px;
+  }
+
+  #character-counter {
+    width: 290px;
+  }
+
+  #tool-bar {
+    width: 290px;
+  }
+
+  .container {
+    width: 290px;
   }
 }
