@@ -1,4 +1,5 @@
 var assert = require('assert');
+// var expect = require('expect');
 
 describe('the landing page', function(){
   it('should be able to grab the page title', function(){
@@ -25,7 +26,7 @@ describe('the attributes of the application', function(){
     bodyField.setValue('description of task');
     assert.equal(bodyField.getValue(), 'description of task');
   });
-  it('should take these inputs and add them to the page', function(){
+  it('should take these inputs and add them to the page when save button is clicked', function(){
   //As a user,
   // when I go to the root of your application.
   browser.url('/');
@@ -40,5 +41,21 @@ describe('the attributes of the application', function(){
   var allTasks = browser.getText('article');
   // I expect my idea to be posted onto the page.
   assert.equal(allTasks.replace(/\n/, ", "), 'title of task, description of task');
+  }
+);
+  it('should clear the input fields when the save button is clicked', function(){
+    browser.url('/');
+    var titleField = browser.element('#title-input');
+    var bodyField  = browser.element('#body-input');
+    browser.click('#save-btn');
+    assert.equal(titleField.clearElement());
+    assert.equal(bodyField.clearElement());
+  }
+);
+  it('should delete a task item when the delete button is clicked', function(){
+    browser.url('/');
+  var taskBox = browser.element('section');
+  browser.click('.delete-button');
+  assert.expect(taskBox).to.not.exist;
 });
 });
