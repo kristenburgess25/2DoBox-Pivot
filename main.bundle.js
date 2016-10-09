@@ -45,9 +45,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	__webpack_require__(5);
+	__webpack_require__(12);
 
-	var $ = __webpack_require__(6);
+	var $ = __webpack_require__(13);
 
 /***/ },
 /* 1 */
@@ -59,7 +59,7 @@
 	var content = __webpack_require__(2);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
+	var update = __webpack_require__(11)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -84,7 +84,7 @@
 
 
 	// module
-	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/* colors */\n/* fonts */\nbody {\n  background-color: #CCC; }\n\nh1 {\n  color: #FFF; }\n", ""]);
+	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/* colors */\n/* color assignments */\n/* fonts */\nbody {\n  background-color: #CCC; }\n\n/* fonts */\nh1, h2, p, button, .input-fields, #search-input {\n  font-family: \"Roboto\", serif; }\n\nh1 {\n  color: #FFF;\n  font-weight: 700;\n  font-size: 40px;\n  letter-spacing: 2px;\n  margin: 40px; }\n  h1 span {\n    font-style: italic; }\n\nh2, p {\n  color: #212121;\n  padding-bottom: 5px; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 400; }\n\np {\n  font-weight: 300;\n  letter-spacing: 0.5px; }\n\n/* main buttons */\nbutton {\n  background-color: #FF4081;\n  border-style: none;\n  border-radius: 2px;\n  color: #212121;\n  font-weight: 400;\n  font-size: 14px;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  width: 93px;\n  height: 36px; }\n  button:hover {\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);\n    cursor: pointer; }\n  button:disabled {\n    background-color: rgba(204, 204, 204, 0.12);\n    box-shadow: none;\n    color: #CCC;\n    cursor: auto; }\n\n/* input section */\n.input-section {\n  background-color: #3F51B5;\n  border: 1px solid #757575;\n  box-shadow: 0 2px 4px #757575;\n  height: 350px;\n  text-align: center; }\n\n.input-fields, #character-counter {\n  width: 425px; }\n\n.input-fields {\n  background: transparent;\n  border: none;\n  border-bottom: 2px solid #FF80AB;\n  color: #FFF;\n  display: block;\n  font-weight: 300;\n  font-size: 16px;\n  height: 30px;\n  margin: 30px auto 10px; }\n  .input-fields:placeholder {\n    color: rgba(250, 250, 250, 0.5); }\n\n#character-counter {\n  color: #FFF;\n  margin: 0 auto;\n  text-align: left; }\n\n#save-btn {\n  margin: 20px; }\n\n/* tool bar */\n#tool-bar {\n  width: 525px;\n  margin: 20px auto;\n  text-align: center; }\n\n#search-input {\n  background: url(" + __webpack_require__(4) + ") no-repeat 8px 6px;\n  background-color: #FFF;\n  border-radius: 2px;\n  border-style: none;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  color: #212121;\n  display: block;\n  font-size: 14px;\n  height: 25px;\n  padding: 2px 15px 2px 30px;\n  width: 30%;\n  margin: 20px auto; }\n\nbutton.show-completed-button {\n  display: block;\n  margin: 15px auto;\n  width: 175px; }\n\nbutton.importance-button {\n  background-color: #757575;\n  color: #FFF;\n  margin-left: 5px; }\n  button.importance-button:hover {\n    background-color: #FF4081;\n    color: #212121; }\n  button.importance-button:focus {\n    background-color: #FF4081;\n    color: #212121; }\n\n/* task list */\n.container {\n  background-color: #FFF;\n  box-shadow: 0 5px 24px rgba(0, 0, 0, 0.2);\n  height: 165px;\n  margin: 0 auto 30px;\n  width: 525px; }\n\n.task-text {\n  padding: 30px 35px 0; }\n\n.completed-task {\n  margin-left: 35px; }\n\n.complete {\n  opacity: .5;\n  box-shadow: none; }\n\n.delete-button {\n  background: url(" + __webpack_require__(5) + ") no-repeat;\n  float: right;\n  height: 29px;\n  width: 29px;\n  margin: 20px 5px 0 0; }\n  .delete-button:hover {\n    background: url(" + __webpack_require__(6) + ") no-repeat;\n    box-shadow: none; }\n\n.up-arrow, .down-arrow {\n  height: 16px;\n  width: 16px;\n  margin: 2px; }\n\n.up-arrow {\n  background: url(" + __webpack_require__(7) + ") no-repeat;\n  margin-left: 10px; }\n  .up-arrow:hover {\n    background: url(" + __webpack_require__(8) + ") no-repeat;\n    box-shadow: none; }\n\n.down-arrow {\n  background: url(" + __webpack_require__(9) + ") no-repeat; }\n  .down-arrow:hover {\n    background: url(" + __webpack_require__(10) + ") no-repeat;\n    box-shadow: none; }\n\n.completed-task {\n  width: 110px; }\n\n.task-values {\n  margin-top: 15px; }\n\n.task-importance {\n  display: inline; }\n\n.task-status {\n  visibility: hidden; }\n\n.show-more-button {\n  background-color: #CCC;\n  border: 2px solid #212121;\n  color: #212121;\n  display: block;\n  margin: 20px auto;\n  width: 122px; }\n  .show-more-button:hover {\n    box-shadow: none; }\n", ""]);
 
 	// exports
 
@@ -144,6 +144,48 @@
 
 /***/ },
 /* 4 */
+/***/ function(module, exports) {
+
+	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='18px' height='18px' viewBox='0 0 18 18' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3EShape%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' opacity='0.54'%3E %3Cg id='Material/Icons-black/search' transform='translate(-3.000000, -3.000000)' fill='%23000000'%3E %3Cpath d='M15.502,9.491 L14.708,9.491 L14.432,9.765 C15.407,10.902 16,12.376 16,13.991 C16,17.581 13.09,20.491 9.5,20.491 C5.91,20.491 3,17.581 3,13.991 C3,10.401 5.91,7.491 9.5,7.491 C11.115,7.491 12.588,8.083 13.725,9.057 L14.001,8.783 L14.001,7.991 L18.999,3 L20.49,4.491 L15.502,9.491 L15.502,9.491 Z M9.5,9.491 C7.014,9.491 5,11.505 5,13.991 C5,16.476 7.014,18.491 9.5,18.491 C11.985,18.491 14,16.476 14,13.991 C14,11.505 11.985,9.491 9.5,9.491 L9.5,9.491 Z' id='Shape' transform='translate(11.745000, 11.745500) scale(1, -1) translate(-11.745000, -11.745500) '%3E%3C/path%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='14px' height='14px' viewBox='0 0 14 14' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3EShape%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' opacity='0.569999993'%3E %3Cg id='Material/Icons-black/close' transform='translate(-5.000000, -5.000000)' fill='%23757575'%3E %3Cpolygon id='Shape' points='19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='14px' height='14px' viewBox='0 0 14 14' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3EShape%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Material/Icons-black/close' transform='translate(-5.000000, -5.000000)' fill='%23FF4081'%3E %3Cpolygon id='Shape' points='19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3EGroup Copy 2%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Group' transform='translate(8.000000, 8.000000) scale(1, -1) translate(-8.000000, -8.000000) '%3E %3Cg id='Oval-Copy'%3E %3Cg%3E %3Ccircle fill='%23757575' cx='8' cy='8' r='8'%3E%3C/circle%3E %3Cpolygon id='Shape-Copy' fill='%23FFFFFF' points='11.0666667 6 8 9.06666667 4.93333333 6 4 6.93333333 8 10.9333333 12 6.93333333'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3EGroup Copy 3%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Group-Copy-3'%3E %3Cg transform='translate(8.000000, 8.000000) scale(1, -1) translate(-8.000000, -8.000000) ' id='Oval-Copy'%3E %3Cg%3E %3Ccircle fill='%23FF4081' cx='8' cy='8' r='8'%3E%3C/circle%3E %3Cpolygon id='Shape-Copy' fill='%23212121' points='11.0666667 6 8 9.06666667 4.93333333 6 4 6.93333333 8 10.9333333 12 6.93333333'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3EGroup%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Group'%3E %3Cg id='Oval-Copy'%3E %3Cg%3E %3Ccircle fill='%23757575' cx='8' cy='8' r='8'%3E%3C/circle%3E %3Cpolygon id='Shape-Copy' fill='%23FFFFFF' points='11.0666667 6 8 9.06666667 4.93333333 6 4 6.93333333 8 10.9333333 12 6.93333333'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3EGroup Copy%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Group-Copy'%3E %3Cg id='Oval-Copy'%3E %3Ccircle fill='%23FF4081' cx='8' cy='8' r='8'%3E%3C/circle%3E %3Cpolygon id='Shape-Copy' fill='%23212121' points='11.0666667 6 8 9.06666667 4.93333333 6 4 6.93333333 8 10.9333333 12 6.93333333'%3E%3C/polygon%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
+
+/***/ },
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -395,8 +437,10 @@
 
 
 /***/ },
-/* 5 */
-/***/ function(module, exports) {
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $ = __webpack_require__(13);
 
 	var $titleInput = $('#title-input');
 	var $bodyInput = $('#body-input');
@@ -442,23 +486,28 @@
 	    }
 	  },
 
-	  // hideTaskFromPage: function() {
-	  //
-	  // },
-
 	  renderTaskToPage: function (task) {
 	    $('.task-list').prepend(`
-	    <div id=${ task.id } class="container">
-	    <h2 contenteditable=true class="task-title">${ task.title }</h2>
-	    <button class="delete-button"></button>
-	    <p contenteditable=true class="task-body">${ task.body }</p>
-	    <button class="completed-task">Completed Task</button>
-	    <button class="up-arrow"></button>
-	    <button class="down-arrow"></button>
-	    <p class="task-importance" >Importance:</p>
-	    <p class="task-importance importance-value">${ task.importance }</p>
+	    <section id=${ task.id } class="container">
+
+	    <button class="delete-button" aria-label="Delete"></button>
+
+	    <article class="task-text">
+	      <h2 contenteditable=true class="task-title">${ task.title }</h2>
+	      <p contenteditable=true class="task-body">${ task.body }</p>
+	    </article>
+
+	    <article class="task-values">
+	      <button class="completed-task" aria-label="Mark complete">Completed</button>
+	      <button class="up-arrow" aria-label="Increase importance"></button>
+	      <button class="down-arrow" aria-label="Decrease importance"></button>
+	      <p class="importance-text task-importance" tabindex="0" >Importance:</p>
+	      <p class="task-importance importance-value" tabindex="0">${ task.importance }</p>
+	    </article>
+
 	    <p class="task-status">${ task.status }</p>
-	    </div>`);
+	    
+	    </section>`);
 	  },
 
 	  saveToLocalStorage: function () {
@@ -488,11 +537,11 @@
 	    });
 	  },
 
-	  // renderMoreTasks: function() {
-	  //   tasksArray.forEach(function(task) {
-	  //     TaskBox.renderTaskToPage(task);
-	  //   })
-	  // },
+	  renderMoreTasks: function () {
+	    this.tasksArray.forEach(function (task) {
+	      TaskBox.renderTaskToPage(task);
+	    });
+	  },
 
 	  renderCompletedTasksToPage: function () {
 	    this.completedTasksArray.forEach(function (task) {
@@ -570,18 +619,24 @@
 
 	$bodyInput.on('keyup', function () {
 	  var characterCount = $bodyInput.val().length;
-	  enableSubmit();
-	  $('.character-count').text(characterCount);
+	  $('#counter').text(characterCount);
 	  if (characterCount > 120) {
 	    $("#save-btn").attr("disabled", true);
-	  } else {
-	    $("#save-btn").attr("disabled", false);
+	    $('#character-counter').text('Character limit exceeded!');
+	  } else if (characterCount < 120) {
+	    resetCharacterCount();
+	    enableSubmit();
 	  }
 	});
 
+	function resetCharacterCount() {
+	  var characterCount = $bodyInput.val().length;
+	  $('#character-counter').text('Character Count: ' + characterCount + "/120");
+	}
+
 	$('.show-more-button').on('click', function () {
-	  debugger;
-	  $('.task-list').children(":hidden").show();
+	  $('.task-list').children().remove();
+	  TaskBox.renderMoreTasks();
 	});
 
 	$('#save-btn').on('click', function () {
@@ -590,7 +645,7 @@
 	    $('.task-list').children(":last-child").hide();
 	  }
 	  clearInputFields();
-	  $('.character-count').text(0);
+	  resetCharacterCount();
 	  $("#save-btn").attr("disabled", true);
 	});
 
@@ -606,33 +661,32 @@
 
 	$('.task-list').on('keyup', '.task-title', function (task) {
 	  var newTitle = $(this).text();
-	  var taskId = $(this).parent().attr('id');
+	  var taskId = $(this).parent().parent().attr('id');
 	  TaskBox.saveEditedTitle(taskId, newTitle);
 	});
 
 	$('.task-list').on('keyup', '.task-body', function (task) {
 	  var newBody = $(this).text();
-	  var taskId = $(this).parent().attr('id');
+	  var taskId = $(this).parent().parent().attr('id');
 	  TaskBox.saveEditedTask(taskId, newBody);
 	});
 
 	$('.task-list').on('click', '.completed-task', function (task) {
-	  var taskId = $(this).parent().attr('id');
+	  var taskId = $(this).parent().parent().attr('id');
 	  var newStatus = "complete";
-	  $(this).parent().css("background-color", "gray");
-	  $(this).parent().removeClass('incomplete').addClass('complete');
+	  $(this).parent().parent().removeClass('incomplete').addClass('complete');
 	  TaskBox.markComplete(taskId, newStatus);
 	});
 
 	$('.task-list').on('click', '.up-arrow', function (task) {
-	  var taskId = $(this).parent().attr('id');
+	  var taskId = $(this).parent().parent().attr('id');
 	  updateImportance(this, increaseImportance(this));
 	  var newImportance = $(this).siblings('.importance-value').text();
 	  TaskBox.saveImportanceValue(taskId, newImportance);
 	});
 
 	$('.task-list').on('click', '.down-arrow', function (task) {
-	  var taskId = $(this).parent().attr('id');
+	  var taskId = $(this).parent().parent().attr('id');
 	  updateImportance(this, decreaseImportance(this));
 	  var newImportance = $(this).siblings('.importance-value').text();
 	  TaskBox.saveImportanceValue(taskId, newImportance);
@@ -679,7 +733,7 @@
 	});
 
 /***/ },
-/* 6 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
