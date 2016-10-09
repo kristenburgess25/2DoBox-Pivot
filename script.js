@@ -175,8 +175,8 @@ $titleInput.on('keyup', function () {
 
 $bodyInput.on('keyup', function() {
   var characterCount = ($bodyInput.val().length);
-    enableSubmit();
-  $('.character-count').text(characterCount);
+  enableSubmit();
+  $('#counter').text(characterCount);
   if (characterCount > 120) {
     $("#save-btn").attr("disabled", true);
   } else {
@@ -195,7 +195,7 @@ $('#save-btn').on('click', function() {
     $('.task-list').children(":last-child").hide();
   }
   clearInputFields();
-  $('.character-count').text(0);
+  $('#counter').text(0);
   $("#save-btn").attr("disabled", true);
 });
 
