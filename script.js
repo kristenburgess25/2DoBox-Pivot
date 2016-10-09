@@ -44,10 +44,6 @@ var TaskBox = {
     }
   },
 
-  // hideTaskFromPage: function() {
-  //
-  // },
-
   renderTaskToPage: function(task) {
     $('.task-list').prepend(`
     <section id=${task.id} class="container">
@@ -93,11 +89,11 @@ var TaskBox = {
     });
   },
 
-  // renderMoreTasks: function() {
-  //   tasksArray.forEach(function(task) {
-  //     TaskBox.renderTaskToPage(task);
-  //   })
-  // },
+  renderMoreTasks: function() {
+    this.tasksArray.forEach(function(task) {
+      TaskBox.renderTaskToPage(task);
+    });
+  },
 
   renderCompletedTasksToPage: function() {
     this.completedTasksArray.forEach(function(task) {
@@ -178,16 +174,17 @@ $bodyInput.on('keyup', function() {
   $('#counter').text(characterCount);
   if (characterCount > 120) {
     $("#save-btn").attr("disabled", true);
-    $('#character-counter').text('character limit exceeded!');
-  } else {
+    $('#character-counter').text('Character limit exceeded!');
+  } else if (characterCount < 120) {
+    $('#character-counter').text('Character Count: ' + characterCount + "/120");
     enableSubmit();
   }
 });
 
 $('.show-more-button').on('click', function() {
-  debugger;
-  $('.task-list').children(":hidden").show();
-})
+  $('.task-list').children().remove();
+  TaskBox.renderMoreTasks();
+});
 
 $('#save-btn').on('click', function() {
   TaskBox.generateTask();
@@ -224,7 +221,6 @@ $('.task-list').on('keyup', '.task-body', function(task) {
 $('.task-list').on('click', '.completed-task', function(task) {
 var taskId = $(this).parent().attr('id');
 var newStatus = "complete";
-// $(this).parent().css("background-color", "gray");
 $(this).parent().removeClass('incomplete').addClass('complete');
 TaskBox.markComplete(taskId, newStatus);
 });

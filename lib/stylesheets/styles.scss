@@ -123,6 +123,19 @@ button.importance-button {
   margin: 20px;
 }
 
+.show-more-button {
+  background-color: $light-grey;
+  border: 2px solid $medium-grey;
+  color: $medium-grey;
+  display: block;
+  margin: 20px auto;
+  width: 122px;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
 /* search bar */
 #tool-bar {
   width: 50%;
