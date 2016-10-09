@@ -211,7 +211,7 @@ $('.show-completed-button').on('click', function() {
 });
 
 $('.task-list').on('click', '.delete-button', function() {
-  var taskId = $(this).parent().parent().attr('id');
+  var taskId = $(this).parent().attr('id');
   TaskBox.deleteTaskFromPage(taskId);
   $(this).parent().remove();
 });
