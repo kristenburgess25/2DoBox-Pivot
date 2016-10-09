@@ -38,6 +38,33 @@ p {
 }
 
 
+/* main buttons */
+button {
+  background-color: $secondary-pink;
+  border-style: none;
+  border-radius: 2px;
+  color: $dark-grey;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 93px;
+  height: 36px;
+
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: $disabled-button;
+    box-shadow: none;
+    color: $light-grey;
+    cursor: auto;
+  }
+}
+
+
 /* input section */
 .input-section {
   background-color: $primary-indigo;
@@ -73,85 +100,14 @@ margin: 30px auto 10px;
   text-align: left;
 }
 
-
-/* buttons */
-button {
-  background-color: $secondary-pink;
-  border-style: none;
-  border-radius: 2px;
-  color: $dark-grey;
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  width: 93px;
-  height: 36px;
-
-  &:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
-    cursor: pointer;
-  }
-
-  &:disabled {
-    background-color: $disabled-button;
-    box-shadow: none;
-    color: $light-grey;
-    cursor: auto;
-  }
-
-}
-
-button.show-completed-button {
-  display: block;
-}
-
-button.importance-button {
-  background-color: $medium-grey;
-  color: $white;
-  margin-left: 5px;
-
-  &:hover{
-    background-color: $secondary-pink;
-  }
-
-  &:focus {
-    background-color: $secondary-pink;
-  }
-}
-
 #save-btn {
   margin: 20px;
 }
 
-.delete-button {
-  background: url('../../Images/delete.svg') no-repeat;
-  float: right;
-  height: 29px;
-  width: 29px;
-  margin: 20px 5px 0 0;
 
-  &:hover {
-    background: url('../../Images/delete-hover.svg') no-repeat;
-    box-shadow: none;
-  }
-}
-
-.show-more-button {
-  background-color: $light-grey;
-  border: 2px solid $medium-grey;
-  color: $medium-grey;
-  display: block;
-  margin: 20px auto;
-  width: 122px;
-
-  &:hover {
-    box-shadow: none;
-  }
-}
-
-/* search bar */
+/* tool bar */
 #tool-bar {
-  width: 50%;
+  width: 45%;
   margin: 20px auto;
   text-align: center;
 }
@@ -171,6 +127,26 @@ button.importance-button {
   margin: 20px auto;
 }
 
+button.show-completed-button {
+  display: block;
+}
+
+button.importance-button {
+  background-color: $medium-grey;
+  color: $white;
+  margin-left: 5px;
+
+  &:hover{
+    background-color: $secondary-pink;
+    color: $dark-grey;
+  }
+
+  &:focus {
+    background-color: $secondary-pink;
+    color: $dark-grey;
+  }
+}
+
 
 /* task list */
 
@@ -179,7 +155,7 @@ background-color: #FFF;
 box-shadow: 0 5px 24px rgba(0, 0, 0, 0.2);
 height: 150px;
 margin: 0 auto 30px;
-width: 50%;
+width: 45%;
 }
 
 .task-title {
@@ -189,4 +165,63 @@ width: 50%;
 .complete {
   opacity: .5;
   box-shadow: none;
+}
+
+.delete-button {
+  background: url('../../Images/delete.svg') no-repeat;
+  float: right;
+  height: 29px;
+  width: 29px;
+  margin: 20px 5px 0 0;
+
+  &:hover {
+    background: url('../../Images/delete-hover.svg') no-repeat;
+    box-shadow: none;
+  }
+}
+
+.up-arrow, .down-arrow {
+  height: 16px;
+  width: 16px;
+  margin: 2px;
+}
+
+.up-arrow {
+  background: url('../../Images/upvote.svg') no-repeat;
+
+  &:hover {
+    background: url('../../Images/upvote-hover.svg') no-repeat;
+    box-shadow: none;
+  }
+}
+
+.down-arrow {
+  background: url('../../Images/downvote.svg') no-repeat;
+
+  &:hover {
+    background: url('../../Images/downvote-hover.svg') no-repeat;
+    box-shadow: none;
+  }
+}
+
+.task-importance {
+  display: inline;
+}
+
+.importance-text {
+  display: inline;
+  margin-left: 10px;
+}
+
+.show-more-button {
+  background-color: $light-grey;
+  border: 2px solid $medium-grey;
+  color: $medium-grey;
+  display: block;
+  margin: 20px auto;
+  width: 122px;
+
+  &:hover {
+    box-shadow: none;
+  }
 }

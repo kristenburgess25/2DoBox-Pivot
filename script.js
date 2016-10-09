@@ -47,16 +47,18 @@ var TaskBox = {
   renderTaskToPage: function(task) {
     $('.task-list').prepend(`
     <section id=${task.id} class="container">
-    <button class="delete-button"></button>
+    <button class="delete-button" aria-label="Delete"></button>
     <article>
-    <h2 contenteditable=true class="task-title">${task.title}</h2>
-    <p contenteditable=true class="task-body">${task.body}</p>
+      <h2 contenteditable=true class="task-title">${task.title}</h2>
+      <p contenteditable=true class="task-body">${task.body}</p>
     </article>
     <button class="completed-task">Completed Task</button>
-    <button class="up-arrow"></button>
-    <button class="down-arrow"></button>
-    <p class="task-importance" >Importance:</p>
-    <p class="task-importance importance-value">${task.importance}</p>
+    <article class="importance">
+      <button class="up-arrow" aria-label="Increase importance"></button>
+      <button class="down-arrow" aria-label="Decrease importance"></button>
+      <p class="importance-text" class="task-importance" >Importance:</p>
+      <p class="task-importance importance-value">${task.importance}</p>
+    </article>
     <p class="task-status">${task.status}</p>
     </section>`);
   },
@@ -176,10 +178,15 @@ $bodyInput.on('keyup', function() {
     $("#save-btn").attr("disabled", true);
     $('#character-counter').text('Character limit exceeded!');
   } else if (characterCount < 120) {
-    $('#character-counter').text('Character Count: ' + characterCount + "/120");
+    resetCharacterCount();
     enableSubmit();
   }
 });
+
+function resetCharacterCount() {
+  var characterCount = ($bodyInput.val().length);
+  $('#character-counter').text('Character Count: ' + characterCount + "/120");
+}
 
 $('.show-more-button').on('click', function() {
   $('.task-list').children().remove();
@@ -192,7 +199,7 @@ $('#save-btn').on('click', function() {
     $('.task-list').children(":last-child").hide();
   }
   clearInputFields();
-  $('#counter').text(0);
+  resetCharacterCount();
   $("#save-btn").attr("disabled", true);
 });
 
