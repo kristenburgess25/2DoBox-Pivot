@@ -175,12 +175,12 @@ $titleInput.on('keyup', function () {
 
 $bodyInput.on('keyup', function() {
   var characterCount = ($bodyInput.val().length);
-  enableSubmit();
   $('#counter').text(characterCount);
   if (characterCount > 120) {
     $("#save-btn").attr("disabled", true);
+    $('#character-counter').text('character limit exceeded!');
   } else {
-    $("#save-btn").attr("disabled", false);
+    enableSubmit();
   }
 });
 
