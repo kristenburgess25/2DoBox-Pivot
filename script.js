@@ -48,17 +48,20 @@ var TaskBox = {
     $('.task-list').prepend(`
     <section id=${task.id} class="container">
     <button class="delete-button" aria-label="Delete"></button>
-    <article>
+    <article class="task-text">
       <h2 contenteditable=true class="task-title">${task.title}</h2>
       <p contenteditable=true class="task-body">${task.body}</p>
     </article>
-    <button class="completed-task">Completed Task</button>
+
+     <button class="completed-task" aria-label="Mark complete">Completed</button>
+
     <article class="importance">
       <button class="up-arrow" aria-label="Increase importance"></button>
       <button class="down-arrow" aria-label="Decrease importance"></button>
       <p class="importance-text" class="task-importance" >Importance:</p>
       <p class="task-importance importance-value">${task.importance}</p>
     </article>
+
     <p class="task-status">${task.status}</p>
     </section>`);
   },
