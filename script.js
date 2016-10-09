@@ -58,7 +58,7 @@ var TaskBox = {
       <button class="completed-task" aria-label="Mark complete">Completed</button>
       <button class="up-arrow" aria-label="Increase importance"></button>
       <button class="down-arrow" aria-label="Decrease importance"></button>
-      <p class="importance-text" class="task-importance" >Importance:</p>
+      <p class="importance-text task-importance" >Importance:</p>
       <p class="task-importance importance-value">${task.importance}</p>
     </article>
 
@@ -229,9 +229,10 @@ $('.task-list').on('keyup', '.task-body', function(task) {
 });
 
 $('.task-list').on('click', '.completed-task', function(task) {
+debugger
 var taskId = $(this).parent().parent().attr('id');
 var newStatus = "complete";
-$(this).parent().removeClass('incomplete').addClass('complete');
+$(this).parent().parent().removeClass('incomplete').addClass('complete');
 TaskBox.markComplete(taskId, newStatus);
 });
 
