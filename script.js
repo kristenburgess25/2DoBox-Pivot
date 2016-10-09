@@ -53,9 +53,9 @@ var TaskBox = {
       <p contenteditable=true class="task-body">${task.body}</p>
     </article>
 
-     <button class="completed-task" aria-label="Mark complete">Completed</button>
 
-    <article class="importance">
+    <article class="task-values">
+      <button class="completed-task" aria-label="Mark complete">Completed</button>
       <button class="up-arrow" aria-label="Increase importance"></button>
       <button class="down-arrow" aria-label="Decrease importance"></button>
       <p class="importance-text" class="task-importance" >Importance:</p>
@@ -211,39 +211,39 @@ $('.show-completed-button').on('click', function() {
 });
 
 $('.task-list').on('click', '.delete-button', function() {
-  var taskId = $(this).parent().attr('id');
+  var taskId = $(this).parent().parent().attr('id');
   TaskBox.deleteTaskFromPage(taskId);
   $(this).parent().remove();
 });
 
 $('.task-list').on('keyup', '.task-title', function(task) {
   var newTitle = $(this).text();
-  var taskId = $(this).parent().attr('id');
+  var taskId = $(this).parent().parent().attr('id');
   TaskBox.saveEditedTitle(taskId, newTitle);
 });
 
 $('.task-list').on('keyup', '.task-body', function(task) {
   var newBody = $(this).text();
-  var taskId = $(this).parent().attr('id');
+  var taskId = $(this).parent().parent().attr('id');
   TaskBox.saveEditedTask(taskId, newBody);
 });
 
 $('.task-list').on('click', '.completed-task', function(task) {
-var taskId = $(this).parent().attr('id');
+var taskId = $(this).parent().parent().attr('id');
 var newStatus = "complete";
 $(this).parent().removeClass('incomplete').addClass('complete');
 TaskBox.markComplete(taskId, newStatus);
 });
 
 $('.task-list').on('click', '.up-arrow', function(task) {
-  var taskId = $(this).parent().attr('id');
+  var taskId = $(this).parent().parent().attr('id');
   updateImportance(this, increaseImportance(this));
   var newImportance = $(this).siblings('.importance-value').text();
   TaskBox.saveImportanceValue(taskId, newImportance);
 });
 
 $('.task-list').on('click', '.down-arrow', function(task) {
-  var taskId = $(this).parent().attr('id');
+  var taskId = $(this).parent().parent().attr('id');
   updateImportance(this, decreaseImportance(this));
   var newImportance = $(this).siblings('.importance-value').text();
   TaskBox.saveImportanceValue(taskId, newImportance);
