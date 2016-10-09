@@ -27,6 +27,7 @@ h1 span {
 }
 
 p {
+  color: $dark-grey;
   font-family: $main-font;
   font-weight: 300;
   letter-spacing: 0.5px;
@@ -36,7 +37,7 @@ button {
   background-color: $secondary-pink;
   border-style: none;
   border-radius: 2px;
-  color: $white;
+  color: $dark-grey;
   font-family: $main-font;
   font-weight: 400;
   font-size: 14px;
@@ -54,6 +55,7 @@ button:hover {
 button:disabled {
   background-color: $disabled-button;
   box-shadow: none;
+  color: $light-grey;
   cursor: auto;
 }
 
@@ -79,9 +81,32 @@ button:disabled {
   width: 35%;
 }
 
-.character-counter {
-  color: $secondary-light-pink;
+#character-counter {
+  color: $white;
   margin: 0 auto;
   text-align: left;
   width: 35%;
+}
+
+#tool-bar {
+  width: 50%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#search-input {
+  color: $dark-grey;
+  display: block;
+  font-family: $main-font;
+  font-size: 14px;
+  height: 25px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.container {
+background-color: #FFF;
+height: 150px;
+margin: 0 auto 30px;
+width: 50%;
 }

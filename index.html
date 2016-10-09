@@ -11,20 +11,21 @@
         <h1>2DoBox<span>-Pivot</span></h1>
         <input id="title-input" class="input-fields" type="text" placeholder="Title" />
         <input id="body-input" class="input-fields" type="text" placeholder="Task" />
-        <p class="character-counter">Character Count: <span id="counter"></span></p>
+        <p id="character-counter">Character Count: <span id="counter">0</span>/120</p>
         <button id="save-btn" type="button" disabled="true">save</button>
       </header>
 
-      <input id="search-input" type="text" placeholder="Search" />
+      <section id="tool-bar">
+        <input id="search-input" type="text" placeholder="Search" />
 
-      <button class="show-completed-button">Show Completed Tasks</button>
+        <button class="show-completed-button">Show Completed Tasks</button>
 
-      <section>
         <button class="importance-button">None</button>
         <button class="importance-button">Low</button>
         <button class="importance-button">Normal</button>
         <button class="importance-button">High</button>
         <button class="importance-button">Critical</button>
+
       </section>
 
       <div class="task-list"></div>
