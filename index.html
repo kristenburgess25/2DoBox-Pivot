@@ -7,24 +7,26 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,700i" rel="stylesheet">
   </head>
     <body>
-      <header>
+      <section class="input-section">
         <h1>2DoBox<span>-Pivot</span></h1>
         <input id="title-input" class="input-fields" type="text" placeholder="Title" />
         <input id="body-input" class="input-fields" type="text" placeholder="Task" />
         <p id="character-counter">Character Count: <span id="counter">0</span>/120</p>
         <button id="save-btn" type="button" disabled="true">save</button>
-      </header>
+      </section>
 
       <section id="tool-bar">
         <input id="search-input" type="text" placeholder="Search" />
 
-        <button class="show-completed-button">Show Completed Tasks</button>
+        <button class="show-completed-button">Show Completed</button>
 
-        <button class="importance-button">None</button>
-        <button class="importance-button">Low</button>
-        <button class="importance-button">Normal</button>
-        <button class="importance-button">High</button>
-        <button class="importance-button">Critical</button>
+        <aside id="importance-filter">
+          <button class="importance-button">None</button>
+          <button class="importance-button">Low</button>
+          <button class="importance-button">Normal</button>
+          <button class="importance-button">High</button>
+          <button class="importance-button">Critical</button>
+        </aside>
 
       </section>
 

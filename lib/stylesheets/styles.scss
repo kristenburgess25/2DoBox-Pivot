@@ -5,7 +5,41 @@ body {
   background-color: $light-grey;
 }
 
-header {
+
+/* fonts */
+h1, h2, p, button, .input-fields, #search-input {
+  font-family: $main-font;
+}
+
+h1 {
+  color: $white;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 2px;
+  margin: 40px;
+
+  span {
+    font-style: italic;
+  }
+}
+
+h2, p {
+  font-color: $dark-grey;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+p {
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+
+/* input section */
+.input-section {
   background-color: $primary-indigo;
   border: 1px solid $medium-grey;
   box-shadow: 0 2px 4px $medium-grey;
@@ -13,81 +47,75 @@ header {
   text-align: center;
 }
 
-h1 {
-  color: $white;
-  font-family: $main-font;
-  font-weight: 700;
-  font-size: 40px;
-  letter-spacing: 2px;
-  margin: 40px;
-}
-
-h1 span {
-  font-style: italic;
-}
-
-p {
-  color: $dark-grey;
-  font-family: $main-font;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-}
-
-button {
-  background-color: $secondary-pink;
-  border-style: none;
-  border-radius: 2px;
-  color: $dark-grey;
-  font-family: $main-font;
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  width: 93px;
-  height: 36px;
-}
-
-button:hover {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
-  cursor: pointer;
-}
-
-button:disabled {
-  background-color: $disabled-button;
-  box-shadow: none;
-  color: $light-grey;
-  cursor: auto;
-}
-
-#save-btn {
-  margin: 20px;
-}
-
-.input-fields::placeholder {
-  color: rgba(250, 250, 250, 0.5)
+.input-fields, #character-counter {
+  width: 35%;
 }
 
 .input-fields {
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid $secondary-light-pink;
-  color: $white;
-  display: block;
-  font-family: $main-font;
-  font-weight: 300;
-  font-size: 16px;
-  height: 30px;
-  margin: 30px auto 10px;
-  width: 35%;
+background: transparent;
+border: none;
+border-bottom: 2px solid $secondary-light-pink;
+color: $white;
+display: block;
+font-weight: 300;
+font-size: 16px;
+height: 30px;
+margin: 30px auto 10px;
+
+&:placeholder {
+  color: rgba(250, 250, 250, 0.5)
+}
 }
 
 #character-counter {
   color: $white;
   margin: 0 auto;
   text-align: left;
-  width: 35%;
 }
 
+
+/* buttons */
+button {
+  background-color: $secondary-pink;
+  border-style: none;
+  border-radius: 2px;
+  color: $dark-grey;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 93px;
+  height: 36px;
+
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: $disabled-button;
+    box-shadow: none;
+    color: $light-grey;
+    cursor: auto;
+  }
+
+}
+
+button.show-completed-button {
+  display: block;
+}
+
+button.importance-button {
+  background-color: $medium-grey;
+  color: $white;
+  margin-left: 5px;
+}
+
+#save-btn {
+  margin: 20px;
+}
+
+/* search bar */
 #tool-bar {
   width: 50%;
   margin: 20px auto;
@@ -97,16 +125,26 @@ button:disabled {
 #search-input {
   color: $dark-grey;
   display: block;
-  font-family: $main-font;
   font-size: 14px;
   height: 25px;
   width: 50%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
+
+#importance-filter {
+  text-align: right;
+}
+
+/* task list */
 
 .container {
 background-color: #FFF;
+box-shadow: 0 5px 24px rgba(0, 0, 0, 0.2);
 height: 150px;
 margin: 0 auto 30px;
 width: 50%;
+}
+
+.task-title {
+  position: relative;
 }
