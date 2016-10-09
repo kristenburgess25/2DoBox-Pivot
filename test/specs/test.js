@@ -5,7 +5,7 @@ describe('the landing page', function(){
   it('should be able to grab the page title', function(){
     browser.url('/');
     var title = browser.getTitle();
-    assert.equal(title, '2DoBox Box');
+    assert.equal(title, '2DoBox-Pivot');
     });
   });
 
@@ -29,7 +29,7 @@ describe('the attributes of the application', function(){
   titleField.setValue('title of task');
   bodyField.setValue('description of task');
   browser.click('#save-btn');
-  var allTasks = browser.getText('article');
+  var allTasks = browser.getText('.task-text');
   assert.equal(allTasks.replace(/\n/, ", "), 'title of task, description of task');
   }
 );

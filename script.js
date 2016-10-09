@@ -47,12 +47,13 @@ var TaskBox = {
   renderTaskToPage: function(task) {
     $('.task-list').prepend(`
     <section id=${task.id} class="container">
+
     <button class="delete-button" aria-label="Delete"></button>
+
     <article class="task-text">
       <h2 contenteditable=true class="task-title">${task.title}</h2>
       <p contenteditable=true class="task-body">${task.body}</p>
     </article>
-
 
     <article class="task-values">
       <button class="completed-task" aria-label="Mark complete">Completed</button>
@@ -63,6 +64,7 @@ var TaskBox = {
     </article>
 
     <p class="task-status">${task.status}</p>
+    
     </section>`);
   },
 
