@@ -1,0 +1,242 @@
+@import 'reset.scss';
+@import 'variables.scss';
+
+body {
+  background-color: $light-grey;
+}
+
+
+/* fonts */
+h1, h2, p, button, .input-fields, #search-input {
+  font-family: $main-font;
+}
+
+h1 {
+  color: $white;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 2px;
+  margin: 40px;
+
+  span {
+    font-style: italic;
+  }
+}
+
+h2, p {
+  color: $dark-grey;
+  padding-bottom: 5px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+p {
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+
+/* main buttons */
+button {
+  background-color: $secondary-pink;
+  border-style: none;
+  border-radius: 2px;
+  color: $dark-grey;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 93px;
+  height: 36px;
+
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: $disabled-button;
+    box-shadow: none;
+    color: $light-grey;
+    cursor: auto;
+  }
+}
+
+
+/* input section */
+.input-section {
+  background-color: $primary-indigo;
+  border: 1px solid $medium-grey;
+  box-shadow: 0 2px 4px $medium-grey;
+  height: 350px;
+  text-align: center;
+}
+
+.input-fields, #character-counter {
+  width: 425px;
+}
+
+.input-fields {
+background: transparent;
+border: none;
+border-bottom: 2px solid $secondary-light-pink;
+color: $white;
+display: block;
+font-weight: 300;
+font-size: 16px;
+height: 30px;
+margin: 30px auto 10px;
+
+&:placeholder {
+  color: rgba(250, 250, 250, 0.5)
+}
+}
+
+#character-counter {
+  color: $white;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#save-btn {
+  margin: 20px;
+}
+
+
+/* tool bar */
+#tool-bar {
+  width: 525px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#search-input {
+  background: url('../../Images/search.svg') no-repeat 8px 6px;
+  background-color: $white;
+  border-radius: 2px;
+  border-style: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: $dark-grey;
+  display: block;
+  font-size: 14px;
+  height: 25px;
+  padding: 2px 15px 2px 30px;
+  width: 30%;
+  margin: 20px auto;
+}
+
+button.show-completed-button {
+  display: block;
+  margin: 15px auto;
+  width: 175px;
+}
+
+button.importance-button {
+  background-color: $medium-grey;
+  color: $white;
+  margin-left: 5px;
+
+  &:hover{
+    background-color: $secondary-pink;
+    color: $dark-grey;
+  }
+
+  &:focus {
+    background-color: $secondary-pink;
+    color: $dark-grey;
+  }
+}
+
+
+/* task list */
+
+.container {
+background-color: #FFF;
+box-shadow: 0 5px 24px rgba(0, 0, 0, 0.2);
+height: 165px;
+margin: 0 auto 30px;
+width: 525px;
+}
+
+.task-text {
+  padding: 30px 35px 0;
+}
+
+.completed-task {
+  margin-left: 35px;
+}
+
+.complete {
+  opacity: .5;
+  box-shadow: none;
+}
+
+.delete-button {
+  background: url('../../Images/delete.svg') no-repeat;
+  float: right;
+  height: 29px;
+  width: 29px;
+  margin: 20px 5px 0 0;
+
+  &:hover {
+    background: url('../../Images/delete-hover.svg') no-repeat;
+    box-shadow: none;
+  }
+}
+
+.up-arrow, .down-arrow {
+  height: 16px;
+  width: 16px;
+  margin: 2px;
+}
+
+.up-arrow {
+  background: url('../../Images/upvote.svg') no-repeat;
+  margin-left: 10px;
+
+  &:hover {
+    background: url('../../Images/upvote-hover.svg') no-repeat;
+    box-shadow: none;
+  }
+}
+
+.down-arrow {
+  background: url('../../Images/downvote.svg') no-repeat;
+
+  &:hover {
+    background: url('../../Images/downvote-hover.svg') no-repeat;
+    box-shadow: none;
+  }
+}
+
+.completed-task {
+  width: 110px;
+}
+
+.task-values {
+  margin-top: 15px;
+}
+
+.task-importance {
+  display: inline;
+}
+
+.task-status {
+  visibility: hidden;
+}
+
+.show-more-button {
+  background-color: $light-grey;
+  border: 2px solid $dark-grey;
+  color: $dark-grey;
+  display: block;
+  margin: 20px auto;
+  width: 122px;
+
+  &:hover {
+    box-shadow: none;
+  }
+}

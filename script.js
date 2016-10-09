@@ -1,3 +1,4 @@
+var $ = require('jquery');
 
 var $titleInput = $('#title-input');
 var $bodyInput = $('#body-input');
@@ -43,24 +44,27 @@ var TaskBox = {
     }
   },
 
-  // hideTaskFromPage: function() {
-  //
-  // },
-
   renderTaskToPage: function(task) {
     $('.task-list').prepend(`
     <section id=${task.id} class="container">
-    <article>
-    <h2 contenteditable=true class="task-title">${task.title}</h2>
-    <p contenteditable=true class="task-body">${task.body}</p>
+
+    <button class="delete-button" aria-label="Delete"></button>
+
+    <article class="task-text">
+      <h2 contenteditable=true class="task-title">${task.title}</h2>
+      <p contenteditable=true class="task-body">${task.body}</p>
     </article>
-    <button class="delete-button"></button>
-    <button class="completed-task">Completed Task</button>
-    <button class="up-arrow"></button>
-    <button class="down-arrow"></button>
-    <p class="task-importance" >Importance:</p>
-    <p class="task-importance importance-value">${task.importance}</p>
+
+    <article class="task-values">
+      <button class="completed-task" aria-label="Mark complete">Completed</button>
+      <button class="up-arrow" aria-label="Increase importance"></button>
+      <button class="down-arrow" aria-label="Decrease importance"></button>
+      <p class="importance-text task-importance" tabindex="0" >Importance:</p>
+      <p class="task-importance importance-value" tabindex="0">${task.importance}</p>
+    </article>
+
     <p class="task-status">${task.status}</p>
+    
     </section>`);
   },
 
@@ -92,11 +96,11 @@ var TaskBox = {
     });
   },
 
-  // renderMoreTasks: function() {
-  //   tasksArray.forEach(function(task) {
-  //     TaskBox.renderTaskToPage(task);
-  //   })
-  // },
+  renderMoreTasks: function() {
+    this.tasksArray.forEach(function(task) {
+      TaskBox.renderTaskToPage(task);
+    });
+  },
 
   renderCompletedTasksToPage: function() {
     this.completedTasksArray.forEach(function(task) {
@@ -174,19 +178,25 @@ $titleInput.on('keyup', function () {
 
 $bodyInput.on('keyup', function() {
   var characterCount = ($bodyInput.val().length);
-    enableSubmit();
-  $('.character-count').text(characterCount);
+  $('#counter').text(characterCount);
   if (characterCount > 120) {
     $("#save-btn").attr("disabled", true);
-  } else {
-    $("#save-btn").attr("disabled", false);
+    $('#character-counter').text('Character limit exceeded!');
+  } else if (characterCount < 120) {
+    resetCharacterCount();
+    enableSubmit();
   }
 });
 
+function resetCharacterCount() {
+  var characterCount = ($bodyInput.val().length);
+  $('#character-counter').text('Character Count: ' + characterCount + "/120");
+}
+
 $('.show-more-button').on('click', function() {
-  debugger;
-  $('.task-list').children(":hidden").show();
-})
+  $('.task-list').children().remove();
+  TaskBox.renderMoreTasks();
+});
 
 $('#save-btn').on('click', function() {
   TaskBox.generateTask();
@@ -194,7 +204,7 @@ $('#save-btn').on('click', function() {
     $('.task-list').children(":last-child").hide();
   }
   clearInputFields();
-  $('.character-count').text(0);
+  resetCharacterCount();
   $("#save-btn").attr("disabled", true);
 });
 
@@ -210,33 +220,32 @@ $('.task-list').on('click', '.delete-button', function() {
 
 $('.task-list').on('keyup', '.task-title', function(task) {
   var newTitle = $(this).text();
-  var taskId = $(this).parent().attr('id');
+  var taskId = $(this).parent().parent().attr('id');
   TaskBox.saveEditedTitle(taskId, newTitle);
 });
 
 $('.task-list').on('keyup', '.task-body', function(task) {
   var newBody = $(this).text();
-  var taskId = $(this).parent().attr('id');
+  var taskId = $(this).parent().parent().attr('id');
   TaskBox.saveEditedTask(taskId, newBody);
 });
 
 $('.task-list').on('click', '.completed-task', function(task) {
-var taskId = $(this).parent().attr('id');
+var taskId = $(this).parent().parent().attr('id');
 var newStatus = "complete";
-$(this).parent().css("background-color", "gray");
-$(this).parent().removeClass('incomplete').addClass('complete');
+$(this).parent().parent().removeClass('incomplete').addClass('complete');
 TaskBox.markComplete(taskId, newStatus);
 });
 
 $('.task-list').on('click', '.up-arrow', function(task) {
-  var taskId = $(this).parent().attr('id');
+  var taskId = $(this).parent().parent().attr('id');
   updateImportance(this, increaseImportance(this));
   var newImportance = $(this).siblings('.importance-value').text();
   TaskBox.saveImportanceValue(taskId, newImportance);
 });
 
 $('.task-list').on('click', '.down-arrow', function(task) {
-  var taskId = $(this).parent().attr('id');
+  var taskId = $(this).parent().parent().attr('id');
   updateImportance(this, decreaseImportance(this));
   var newImportance = $(this).siblings('.importance-value').text();
   TaskBox.saveImportanceValue(taskId, newImportance);

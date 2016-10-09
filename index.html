@@ -1,36 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html  lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="lib/CSS/reset.css">
-    <title>2DoBox Box</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
-    <link rel="stylesheet" href="lib/CSS/styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=true">
+    <title>2DoBox-Pivot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,700i" rel="stylesheet">
   </head>
     <body>
-      <header>
-        <h1><span>2Do</span>Box</h1>
-        <input id="title-input" type="text" placeholder="Title" contenteditable="true" />
-        <input id="body-input" type="text" placeholder="Task" contenteditable="true" />
-        <p> Character Count </p>
-        <p class="character-count"> 0 </p>
+      <section class="input-section">
+        <h1>2DoBox<span>-Pivot</span></h1>
+        <input id="title-input" class="input-fields" type="text" placeholder="Title" aria-required="true" aria-label="Title"/>
+        <input id="body-input" class="input-fields" type="text" placeholder="Task" aria-required="true" aria-label="Task"/>
+        <p id="character-counter">Character Count: <span id="counter">0</span>/120</p>
         <button id="save-btn" type="button" disabled="true">save</button>
-      </header>
+      </section>
 
-      <input id="search-input" type="text" placeholder="Search" />
-      <button class="show-completed-button">Show Completed Tasks</button>
-      <section>
-        <button class="importance-button">None</button>
-        <button class="importance-button">Low</button>
-        <button class="importance-button">Normal</button>
-        <button class="importance-button">High</button>
-        <button class="importance-button">Critical</button>
+      <section id="tool-bar">
+        <input id="search-input" type="text" placeholder="Search" aria-label="Search" />
+
+        <button class="show-completed-button">Show Completed</button>
+        
+        <aside id="importance-filter">
+          <button class="importance-button">None</button>
+          <button class="importance-button">Low</button>
+          <button class="importance-button">Normal</button>
+          <button class="importance-button">High</button>
+          <button class="importance-button">Critical</button>
+
+        </aside>
+
       </section>
 
       <div class="task-list"></div>
-      <button class="show-more-button">Show More Tasks</button>
+
+      <button class="show-more-button">Show More +</button>
+
       <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-      <script src="script.js"></script>
+      <script src="main.bundle.js" charset="UTF-8"></script>
   </body>
 </html>
