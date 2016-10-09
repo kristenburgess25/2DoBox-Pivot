@@ -224,7 +224,7 @@ $('.task-list').on('keyup', '.task-body', function(task) {
 $('.task-list').on('click', '.completed-task', function(task) {
 var taskId = $(this).parent().attr('id');
 var newStatus = "complete";
-$(this).parent().css("background-color", "gray");
+// $(this).parent().css("background-color", "gray");
 $(this).parent().removeClass('incomplete').addClass('complete');
 TaskBox.markComplete(taskId, newStatus);
 });
