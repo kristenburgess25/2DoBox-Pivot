@@ -3,6 +3,8 @@ var $ = require('jquery');
 var $titleInput = $('#title-input');
 var $bodyInput = $('#body-input');
 
+var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
+
 $(document).ready(function() {
   TaskBox.getTaskFromLocalStorage();
   TaskBox.renderStoredTasksToPage();
@@ -13,7 +15,23 @@ function clearInputFields() {
   $bodyInput.val('');
 }
 
-var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
+function updateImportance(e, value) {
+  $(e).siblings('.importance-value').text(value);
+}
+
+function decreaseImportance(e) {
+  var currentImportance = $(e).siblings('.importance-value').text();
+  var arrayNumber = votes.indexOf(currentImportance);
+  arrayNumber--;
+  return votes[arrayNumber];
+}
+
+function increaseImportance(e) {
+  var currentImportance = $(e).siblings('.importance-value').text();
+  var arrayNumber = votes.indexOf(currentImportance);
+  arrayNumber++;
+  return votes[arrayNumber];
+}
 
 function Task (title, body, id, importance, status) {
   this.title = title;
@@ -64,7 +82,7 @@ var TaskBox = {
     </article>
 
     <p class="task-status">${task.status}</p>
-    
+
     </section>`);
   },
 
@@ -111,6 +129,14 @@ var TaskBox = {
   deleteTaskFromPage: function(id) {
     id = +id;
     this.tasksArray = this.tasksArray.filter(function(tasks) {
+      return tasks.id !== id;
+    });
+    this.saveToLocalStorage();
+  },
+
+  deleteCompletedTask: function(id) {
+    id = +id;
+    this.completedTasksArray = this.completedTasksArray.filter(function(tasks) {
       return tasks.id !== id;
     });
     this.saveToLocalStorage();
@@ -215,6 +241,7 @@ $('.show-completed-button').on('click', function() {
 $('.task-list').on('click', '.delete-button', function() {
   var taskId = $(this).parent().attr('id');
   TaskBox.deleteTaskFromPage(taskId);
+  TaskBox.deleteCompletedTask(taskId);
   $(this).parent().remove();
 });
 
@@ -250,24 +277,6 @@ $('.task-list').on('click', '.down-arrow', function(task) {
   var newImportance = $(this).siblings('.importance-value').text();
   TaskBox.saveImportanceValue(taskId, newImportance);
 });
-
-function updateImportance(e, value) {
-  $(e).siblings('.importance-value').text(value);
-}
-
-function decreaseImportance(e) {
-  var currentImportance = $(e).siblings('.importance-value').text();
-  var arrayNumber = votes.indexOf(currentImportance);
-  arrayNumber--;
-  return votes[arrayNumber];
-}
-
-function increaseImportance(e) {
-  var currentImportance = $(e).siblings('.importance-value').text();
-  var arrayNumber = votes.indexOf(currentImportance);
-  arrayNumber++;
-  return votes[arrayNumber];
-}
 
 $('#search-input').on('keyup', function(){
     var filter = $(this).val();
