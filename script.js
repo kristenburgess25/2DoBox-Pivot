@@ -50,17 +50,19 @@ var TaskBox = {
 
   renderTaskToPage: function(task) {
     $('.task-list').prepend(`
-    <div id=${task.id} class="container">
+    <section id=${task.id} class="container">
+    <article>
     <h2 contenteditable=true class="task-title">${task.title}</h2>
-    <button class="delete-button"></button>
     <p contenteditable=true class="task-body">${task.body}</p>
+    </article>
+    <button class="delete-button"></button>
     <button class="completed-task">Completed Task</button>
     <button class="up-arrow"></button>
     <button class="down-arrow"></button>
     <p class="task-importance" >Importance:</p>
     <p class="task-importance importance-value">${task.importance}</p>
     <p class="task-status">${task.status}</p>
-    </div>`);
+    </section>`);
   },
 
   saveToLocalStorage: function() {
