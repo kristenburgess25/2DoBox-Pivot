@@ -24,7 +24,7 @@ h1 {
 }
 
 h2, p {
-  font-color: $dark-grey;
+  color: $dark-grey;
 }
 
 h2 {
@@ -121,6 +121,19 @@ button.importance-button {
 
 #save-btn {
   margin: 20px;
+}
+
+.delete-button {
+  background: url('../../Images/delete.svg') no-repeat;
+  float: right;
+  height: 29px;
+  width: 29px;
+  margin: 20px 5px 0 0;
+
+  &:hover {
+    background: url('../../Images/delete-hover.svg') no-repeat;
+    box-shadow: none;
+  }
 }
 
 .show-more-button {
