@@ -95,13 +95,17 @@ it('should delete a task item when the delete button is clicked', function(){
   browser.url('/');
   var titleField = browser.element('#title-input');
   var bodyField  = browser.element('#body-input');
+
   titleField.setValue('title of task');
   bodyField.setValue('description of task');
+
   browser.click('#save-btn');
 
-  var lengthOfTaskList = browser.element('section').getText().length;
+ var lengthOfTaskList = browser.element('section').getText().length;
+
  browser.click('.delete-button');
+
  var lengthAfterDelete = browser.element('section').getText().length;
- assert.equal(lengthAfterDelete,lengthOfTaskList-1);
+ assert.equal(lengthAfterDelete, lengthOfTaskList-1);
 });
 });
