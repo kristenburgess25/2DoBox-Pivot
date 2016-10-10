@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-const Task = require('../script.js')
+const Task = require('../lib/script.js');
 
 describe('our test bundle', function () {
   it('should work', function () {

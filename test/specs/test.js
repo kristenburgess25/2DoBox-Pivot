@@ -1,5 +1,4 @@
 var assert = require('assert');
-// var expect = require('expect');
 
 describe('the landing page', function(){
   it('should be able to grab the page title', function(){
