@@ -13,19 +13,30 @@ describe('our test bundle', function () {
 
 
 describe('Task Object', function(){
-var task = new Task();
+var task = new Task('title', 'body');
 
 it('Task should be an object', function(){
   assert.isObject(task, true);
 });
+
+it('Task should have a default importance of Normal', function(){
+  assert.equal(task.importance, 'Normal');
 });
 
-//
-// it.skip('Task should have a default importance of normal/votes[2]', function(){
-//   assert.equal(task.importance, votes[2]);
+it('Task should have a default status status of incomplete', function(){
+  assert.equal(task.status, 'incomplete');
+});
+
+// it('"taskBox.upvote" should increase the importance value by an index of 1 in the votes array', function(){
+//   var arrayNumber = votes.indexOf('Normal');
+//   var newImportance = arrayNumber++;
+//   task.saveImportanceValue();
+//   assert.equal(task.importance, newImportance);
 // });
-//
-// it.skip('Task should have a default status status of incomplete', function(){
-//   assert.equal(task.status, 'incomplete');
-// });
-  // });
+
+  it('should save an edited title', function() {
+    var newTitle = 'Kristen';
+    taskBox.saveEditedTitle(newTitle);
+    assert.equal(task.title, 'Kristen');
+  });
+  });
