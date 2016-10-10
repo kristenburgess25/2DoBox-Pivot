@@ -27,18 +27,28 @@ it('Task should have a default status status of incomplete', function(){
   assert.equal(task.status, 'incomplete');
 });
 
-// it('"taskBox.upvote" should increase the importance value by an index of 1 in the votes array', function(){
-//   var arrayNumber = votes.indexOf('Normal');
-//   var newImportance = arrayNumber++;
-//   task.saveImportanceValue();
-//   assert.equal(task.importance, newImportance);
-// });
+it('Should have a function that renders tasks from local storage to the page', function(){
+  assert.isFunction(taskBox.renderStoredTasksToPage);
+});
 
-  it.skip('should save an edited title', function() {
-    var newTitle = 'Kristen';
+it.skip('"taskBox.upvote" should increase the importance value by an index of 1 in the votes array', function(){
+  var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
+  var arrayNumber = votes.indexOf('Normal');
+  var newImportance = votes.indexOf('High');
+  taskBox.saveImportanceValue();
+  assert.equal(task.importance, newImportance);
+});
+
+  it('should save an edited title', function() {
+    var newTitle = 'title';
     taskBox.saveEditedTitle(newTitle);
-    assert.equal(task.title, 'Kristen');
+    assert.equal(task.title, newTitle);
   });
+
+  it('should have an array for storing tasks', function() {
+  taskBox.tasksArray = [];
+  assert.isArray(taskBox.tasksArray);
+});
 
   it('should add a new task to the array', function(){
     localStorage.clear();
