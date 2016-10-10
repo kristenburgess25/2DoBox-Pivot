@@ -2259,6 +2259,7 @@
 /* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var $ = __webpack_require__(13);
 	var Task = __webpack_require__(14);
 
 	var $titleInput = $('#title-input');
