@@ -91,7 +91,7 @@ it('allows me to downvote the importance of a task from its default state', func
   browser.click('.down-arrow');
   assert.equal(taskImportance.getText(), 'None');
 });
-it('should delete a task item when the delete button is clicked', function(){
+it.skip('should delete a task item when the delete button is clicked', function(){
   browser.url('/');
   var titleField = browser.element('#title-input');
   var bodyField  = browser.element('#body-input');
@@ -104,4 +104,71 @@ it('should delete a task item when the delete button is clicked', function(){
  var lengthAfterDelete = browser.element('section').getText().length;
  assert.equal(lengthAfterDelete,lengthOfTaskList-1);
 });
+
+it('allows me to filter tasks by importance of NONE when the "None" button is clicked', function(){
+  browser.url('/');
+  var titleField = browser.element('#title-input');
+  var bodyField  = browser.element('#body-input');
+  titleField.setValue('title of task');
+  bodyField.setValue('description of task');
+  browser.click('#save-btn');
+  browser.click('.down-arrow');
+  browser.click('.down-arrow');
+  var taskImportance = browser.element('.importance-value');
+  browser.click('#none');
+  assert.equal(taskImportance.getText(), 'None');
+  });
+
+  it('allows me to filter tasks by importance of LOW when the "Low" button is clicked', function(){
+    browser.url('/');
+    var titleField = browser.element('#title-input');
+    var bodyField  = browser.element('#body-input');
+    titleField.setValue('title of task');
+    bodyField.setValue('description of task');
+    browser.click('#save-btn');
+    browser.click('.down-arrow');
+    var taskImportance = browser.element('.importance-value');
+    browser.click('#low');
+    assert.equal(taskImportance.getText(),'Low');
+    });
+
+  it('allows me to filter tasks by importance of "NORMAL" when the "Normal" button is clicked', function(){
+      browser.url('/');
+      var titleField = browser.element('#title-input');
+      var bodyField  = browser.element('#body-input');
+      titleField.setValue('title of task');
+      bodyField.setValue('description of task');
+      browser.click('#save-btn');
+      var taskImportance = browser.element('.importance-value');
+      browser.click('#none');
+      assert.equal(taskImportance.getText(), 'Normal');
+      });
+
+    it('allows me to filter tasks by importance of "HIGH" when the "High" button is clicked', function(){
+        browser.url('/');
+        var titleField = browser.element('#title-input');
+        var bodyField  = browser.element('#body-input');
+        titleField.setValue('title of task');
+        bodyField.setValue('description of task');
+        browser.click('#save-btn');
+        browser.click('.up-arrow');
+        var taskImportance = browser.element('.importance-value');
+        browser.click('#high');
+        assert.equal(taskImportance.getText(), 'High');
+        });
+    it('allows me to filter tasks by importance of "CRITICAL" when the "Critical" button is clicked', function(){
+        browser.url('/');
+        var titleField = browser.element('#title-input');
+        var bodyField  = browser.element('#body-input');
+
+        titleField.setValue('title of task');
+        bodyField.setValue('description of task');
+        browser.click('#save-btn');
+        browser.click('.up-arrow');
+        browser.click('.up-arrow')
+        var taskImportance = browser.element('.importance-value');
+        browser.click('#critical');
+        assert.equal(taskImportance.getText(), 'Critical');
+            });
+
 });
