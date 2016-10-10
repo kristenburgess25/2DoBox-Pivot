@@ -106,3 +106,28 @@ it('should delete a task item when the delete button is clicked', function(){
  assert.equal(lengthAfterDelete,lengthOfTaskList-1);
 });
 });
+
+describe('local storage tests',function(){
+
+  localStorage.clear();
+  var taskBox = TaskBox;
+  console.log(taskBox.tasksArray.length);
+  taskBox.tasksArray = [];
+
+
+  // it('should add a new task to the array', function(){
+  //
+  //   assert.equal(taskBox.tasksArray.length, 0);
+  //   browser click event
+  //   assert.equal(taskBox.tasksArray.length, 1);
+  //   assert.equal(taskBox.tasksArray[0].title, 'title');
+  //   assert.equal(taskBox.tasksArray[0].body, 'body');
+  // });
+  //
+  // it('should remove a task from the array', function(){
+  //   var startCount = taskBox.tasksArray.length;
+  //   toDoList.removeTask(taskBox.tasksArray[0].id);
+  //   assert.equal(taskBox.tasksArray.length, startCount - 1);
+  // });
+
+});
