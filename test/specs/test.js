@@ -1,4 +1,5 @@
 var assert = require('assert');
+var $ = require('jquery');
 
 describe('the landing page', function(){
   it('should be able to grab the page title', function(){

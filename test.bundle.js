@@ -323,157 +323,7 @@
 
 
 /***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $ = __webpack_require__(13);
-	var Task = __webpack_require__(14);
-	var taskBox = __webpack_require__(15);
-
-	var $titleInput = $('#title-input');
-	var $bodyInput = $('#body-input');
-
-	var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
-
-	$(document).ready(function () {
-	  taskBox.getTaskFromLocalStorage();
-	  taskBox.renderStoredTasksToPage();
-	});
-
-	function clearInputFields() {
-	  $titleInput.val('');
-	  $bodyInput.val('');
-	}
-
-	function updateImportance(e, value) {
-	  $(e).siblings('.importance-value').text(value);
-	}
-
-	function decreaseImportance(e) {
-	  var currentImportance = $(e).siblings('.importance-value').text();
-	  var arrayNumber = votes.indexOf(currentImportance);
-	  arrayNumber--;
-	  return votes[arrayNumber];
-	}
-
-	function increaseImportance(e) {
-	  var currentImportance = $(e).siblings('.importance-value').text();
-	  var arrayNumber = votes.indexOf(currentImportance);
-	  arrayNumber++;
-	  return votes[arrayNumber];
-	}
-
-	function enableSubmit() {
-	  if ($bodyInput.val().length > 0 && $titleInput.val().length > 0) {
-	    $("#save-btn").attr("disabled", false);
-	  } else {
-	    $("#save-btn").attr("disabled", true);
-	  }
-	}
-
-	function resetCharacterCount() {
-	  var characterCount = $bodyInput.val().length;
-	  $('#character-counter').text('Character Count: ' + characterCount + "/120");
-	}
-
-	$titleInput.on('keyup', function () {
-	  enableSubmit();
-	});
-
-	$bodyInput.on('keyup', function () {
-	  var characterCount = $bodyInput.val().length;
-	  $('#counter').text(characterCount);
-	  if (characterCount > 120) {
-	    $("#save-btn").attr("disabled", true);
-	    $('#character-counter').text('Character limit exceeded!');
-	  } else if (characterCount < 120) {
-	    resetCharacterCount();
-	    enableSubmit();
-	  }
-	});
-
-	$('#save-btn').on('click', function () {
-	  taskBox.generateTask();
-	  if ($('.task-list').children().length > 10) {
-	    $('.task-list').children(":last-child").hide();
-	  }
-	  clearInputFields();
-	  resetCharacterCount();
-	  $("#save-btn").attr("disabled", true);
-	});
-
-	$('.show-more-button').on('click', function () {
-	  $('.task-list').children().remove();
-	  taskBox.renderMoreTasks();
-	});
-
-	$('.show-completed-button').on('click', function () {
-	  taskBox.renderCompletedTasksToPage();
-	});
-
-	$('.task-list').on('click', '.delete-button', function () {
-	  var taskId = $(this).parent().attr('id');
-	  taskBox.deleteTaskFromPage(taskId);
-	  taskBox.deleteCompletedTask(taskId);
-	  $(this).parent().remove();
-	});
-
-	$('.task-list').on('keyup', '.task-title', function (task) {
-	  var newTitle = $(this).text();
-	  var taskId = $(this).parent().parent().attr('id');
-	  taskBox.saveEditedTitle(taskId, newTitle);
-	});
-
-	$('.task-list').on('keyup', '.task-body', function (task) {
-	  var newBody = $(this).text();
-	  var taskId = $(this).parent().parent().attr('id');
-	  taskBox.saveEditedTask(taskId, newBody);
-	});
-
-	$('.task-list').on('click', '.completed-task', function (task) {
-	  var taskId = $(this).parent().parent().attr('id');
-	  var newStatus = "complete";
-	  $(this).parent().parent().removeClass('incomplete').addClass('complete');
-	  taskBox.markComplete(taskId, newStatus);
-	});
-
-	$('.task-list').on('click', '.up-arrow', function (task) {
-	  var taskId = $(this).parent().parent().attr('id');
-	  updateImportance(this, increaseImportance(this));
-	  var newImportance = $(this).siblings('.importance-value').text();
-	  taskBox.saveImportanceValue(taskId, newImportance);
-	});
-
-	$('.task-list').on('click', '.down-arrow', function (task) {
-	  var taskId = $(this).parent().parent().attr('id');
-	  updateImportance(this, decreaseImportance(this));
-	  var newImportance = $(this).siblings('.importance-value').text();
-	  taskBox.saveImportanceValue(taskId, newImportance);
-	});
-
-	$('#search-input').on('keyup', function () {
-	  var filter = $(this).val();
-	  $('.container').each(function () {
-	    if ($(this).text().search(new RegExp(filter, 'i')) < 0) {
-	      $(this).fadeOut();
-	    } else {
-	      $(this).fadeIn();
-	    }
-	  });
-	});
-
-	$('.importance-button').on('click', function () {
-	  var filter = $(this).text();
-	  $('.container').each(function () {
-	    if ($(this).children().text().search(new RegExp(filter, 'i')) < 0) {
-	      $(this).fadeOut();
-	    } else {
-	      $(this).fadeIn();
-	    }
-	  });
-	});
-
-/***/ },
+/* 12 */,
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2124,183 +1974,8 @@
 	if(!noGlobal){window.jQuery=window.$=jQuery;}return jQuery;});
 
 /***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $ = __webpack_require__(13);
-
-	var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
-
-	function Task(title, body, id, importance, status) {
-	  this.title = title;
-	  this.body = body;
-	  this.id = id || Date.now();
-	  this.importance = importance || votes[2];
-	  this.status = status || "incomplete";
-	}
-
-	module.exports = Task;
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Task = __webpack_require__(14);
-
-	var $titleInput = $('#title-input');
-	var $bodyInput = $('#body-input');
-
-	var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
-
-	var TaskBox = {
-	  tasksArray: [],
-	  completedTasksArray: [],
-
-	  generateTask: function () {
-	    var task = new Task($titleInput.val(), $bodyInput.val());
-	    this.saveTaskInArray(task);
-	    this.renderTaskToPage(task);
-	    this.saveToLocalStorage();
-	  },
-
-	  saveTaskInArray: function (task) {
-	    this.tasksArray.push(task);
-	  },
-
-	  renderTaskToPage: function (task) {
-	    $('.task-list').prepend(`
-	      <section id=${ task.id } class="container">
-
-	      <button class="delete-button" aria-label="Delete"></button>
-
-	      <article class="task-text">
-	      <h2 contenteditable=true class="task-title">${ task.title }</h2>
-	      <p contenteditable=true class="task-body">${ task.body }</p>
-	      </article>
-
-	      <article class="task-values">
-	      <button class="completed-task" aria-label="Mark complete">Completed</button>
-	      <button class="up-arrow" aria-label="Increase importance"></button>
-	      <button class="down-arrow" aria-label="Decrease importance"></button>
-	      <p class="importance-text task-importance" tabindex="0" >Importance:</p>
-	      <p class="task-importance importance-value" tabindex="0">${ task.importance }</p>
-	      </article>
-
-	      <p class="task-status">${ task.status }</p>
-
-	      </section>`);
-	  },
-
-	  saveToLocalStorage: function () {
-	    localStorage.setItem('tasksArray', JSON.stringify(this.tasksArray));
-	    localStorage.setItem('completedTasksArray', JSON.stringify(this.completedTasksArray));
-	  },
-
-	  getTaskFromLocalStorage: function () {
-	    var storedTasksArray = JSON.parse(localStorage.getItem('tasksArray'));
-	    var storedCompletedTasks = JSON.parse(localStorage.getItem('completedTasksArray'));
-	    if (storedTasksArray) {
-	      this.tasksArray = storedTasksArray.map(function (task) {
-	        return new Task(task.title, task.body, task.id, task.importance, task.status);
-	      });
-	    }
-	    if (storedCompletedTasks) {
-	      this.completedTasksArray = storedCompletedTasks.map(function (task) {
-	        return new Task(task.title, task.body, task.id, task.importance, task.status);
-	      });
-	    }
-	  },
-
-	  renderStoredTasksToPage: function () {
-	    var smallArray = this.tasksArray.slice(-10, this.tasksArray.length);
-	    smallArray.forEach(function (task) {
-	      TaskBox.renderTaskToPage(task);
-	    });
-	  },
-
-	  renderMoreTasks: function () {
-	    this.tasksArray.forEach(function (task) {
-	      TaskBox.renderTaskToPage(task);
-	    });
-	  },
-
-	  renderCompletedTasksToPage: function () {
-	    this.completedTasksArray.forEach(function (task) {
-	      TaskBox.renderTaskToPage(task);
-	    });
-	  },
-
-	  findUniqueId: function (id) {
-	    uniqueId = +id;
-	  },
-
-	  deleteTaskFromPage: function (id) {
-	    this.findUniqueId(id);
-	    this.tasksArray = this.tasksArray.filter(function (tasks) {
-	      return tasks.id !== uniqueId;
-	    });
-	    this.saveToLocalStorage();
-	  },
-
-	  deleteCompletedTask: function (id) {
-	    this.findUniqueId(id);
-	    this.completedTasksArray = this.completedTasksArray.filter(function (tasks) {
-	      return tasks.id !== uniqueId;
-	    });
-	    this.saveToLocalStorage();
-	  },
-
-	  saveEditedTitle: function (id, newTitle) {
-	    this.findUniqueId(id);
-	    this.tasksArray.forEach(function (tasks) {
-	      if (tasks.id === uniqueId) {
-	        tasks.title = newTitle;
-	      }
-	    });
-	    this.saveToLocalStorage();
-	  },
-
-	  saveEditedTask: function (id, newBody) {
-	    this.findUniqueId(id);
-	    this.tasksArray.forEach(function (tasks) {
-	      if (tasks.id === uniqueId) {
-	        tasks.body = newBody;
-	      }
-	    });
-	    this.saveToLocalStorage();
-	  },
-
-	  saveImportanceValue: function (id, newImportance) {
-	    this.findUniqueId(id);
-	    this.tasksArray.forEach(function (tasks) {
-	      if (tasks.id === uniqueId) {
-	        tasks.importance = newImportance;
-	      }
-	    });
-	    this.saveToLocalStorage();
-	  },
-
-	  saveTaskInNewArray: function (task) {
-	    this.completedTasksArray.push(task);
-	  },
-
-	  markComplete: function (id, newStatus) {
-	    this.findUniqueId(id);
-	    this.tasksArray.forEach(function (tasks) {
-	      if (tasks.id === uniqueId) {
-	        tasks.status = newStatus;
-	        TaskBox.saveTaskInNewArray(tasks);
-	      }
-	    });
-	    this.deleteTaskFromPage(id);
-	    this.saveToLocalStorage();
-	  }
-
-	};
-
-	module.exports = TaskBox;
-
-/***/ },
+/* 14 */,
+/* 15 */,
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2437,35 +2112,15 @@
 
 	__webpack_require__(24);
 
-	// //sample test
-	// describe('our test bundle', function () {
-	//   it('should work', function () {
-	//     assert(true);
-	//   });
-	//   });
-
-	// describe('Task Object', function(){
-	// var task = new Task();
-	//
-	// it('Task should be an object', function(){
-	//   assert.isObject(task, true);
-	// });
-	// //
-	// // it.skip('Task should have a default importance of normal/votes[2]', function(){
-	// //   assert.equal(task.importance, votes[2]);
-	// // });
-	// //
-	// // it.skip('Task should have a default status status of incomplete', function(){
-	// //   assert.equal(task.status, 'incomplete');
-	// // });
-	//   });
+	var $ = __webpack_require__(13);
 
 /***/ },
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var $ = __webpack_require__(13);
 	const assert = __webpack_require__(25).assert;
-	const Task = __webpack_require__(12);
+	const Task = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../lib/script.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	describe('our test bundle', function () {
 	  it('should work', function () {
@@ -2473,21 +2128,21 @@
 	  });
 	});
 
-	describe('Task Object', function () {
-	  var task = new Task();
-
-	  it('Task should be an object', function () {
-	    assert.isObject(task, true);
-	  });
-	  //
-	  // it.skip('Task should have a default importance of normal/votes[2]', function(){
-	  //   assert.equal(task.importance, votes[2]);
-	  // });
-	  //
-	  // it.skip('Task should have a default status status of incomplete', function(){
-	  //   assert.equal(task.status, 'incomplete');
-	  // });
-	});
+	// describe('Task Object', function(){
+	// var task = new Task();
+	//
+	// it('Task should be an object', function(){
+	//   assert.isObject(task, true);
+	// });
+	//
+	// it.skip('Task should have a default importance of normal/votes[2]', function(){
+	//   assert.equal(task.importance, votes[2]);
+	// });
+	//
+	// it.skip('Task should have a default status status of incomplete', function(){
+	//   assert.equal(task.status, 'incomplete');
+	// });
+	//   });
 
 /***/ },
 /* 25 */
