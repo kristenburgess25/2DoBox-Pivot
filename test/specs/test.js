@@ -176,4 +176,5 @@ it('allows me to filter tasks by importance of NONE when the "None" button is cl
         assert.equal(taskImportance.getText(), 'Critical');
             });
 
+
 });
