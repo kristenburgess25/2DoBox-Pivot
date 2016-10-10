@@ -1,5 +1,4 @@
 var assert = require('assert');
-// var expect = require('expect');
 
 describe('the landing page', function(){
   it('should be able to grab the page title', function(){
@@ -62,7 +61,7 @@ it('should set a default importance vaue of "Normal" on a newly created task', f
   bodyField.setValue('description of task');
   browser.click('#save-btn');
   var taskImportance = browser.element('.importance-value');
-  assert.equal(taskImportance.getText(), 'Normal')
+  assert.equal(taskImportance.getText(), 'Normal');
 });
 it('allows me to upvote the importance of a task from its default state', function(){
   browser.url('/');

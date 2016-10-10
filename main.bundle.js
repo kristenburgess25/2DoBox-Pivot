@@ -84,7 +84,7 @@
 
 
 	// module
-	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/* colors */\n/* color assignments */\n/* fonts */\nbody {\n  background-color: #CCC; }\n\n/* fonts */\nh1, h2, p, button, .input-fields, #search-input {\n  font-family: \"Roboto\", serif; }\n\nh1 {\n  color: #FFF;\n  font-weight: 700;\n  font-size: 40px;\n  letter-spacing: 2px;\n  margin: 40px; }\n  h1 span {\n    font-style: italic; }\n\nh2, p {\n  color: #212121;\n  padding-bottom: 5px; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 400; }\n\np {\n  font-weight: 300;\n  letter-spacing: 0.5px; }\n\n/* main buttons */\nbutton {\n  background-color: #FF4081;\n  border-style: none;\n  border-radius: 2px;\n  color: #212121;\n  font-weight: 400;\n  font-size: 14px;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  width: 93px;\n  height: 36px; }\n  button:hover {\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);\n    cursor: pointer; }\n  button:disabled {\n    background-color: rgba(204, 204, 204, 0.12);\n    box-shadow: none;\n    color: #CCC;\n    cursor: auto; }\n\n/* input section */\n.input-section {\n  background-color: #3F51B5;\n  border: 1px solid #757575;\n  box-shadow: 0 2px 4px #757575;\n  height: 350px;\n  text-align: center; }\n\n.input-fields, #character-counter {\n  width: 425px; }\n\n.input-fields {\n  background: transparent;\n  border: none;\n  border-bottom: 2px solid #FF80AB;\n  color: #FFF;\n  display: block;\n  font-weight: 300;\n  font-size: 16px;\n  height: 30px;\n  margin: 30px auto 10px; }\n  .input-fields:placeholder {\n    color: rgba(250, 250, 250, 0.5); }\n\n#character-counter {\n  color: #FFF;\n  margin: 0 auto;\n  text-align: left; }\n\n#save-btn {\n  margin: 20px; }\n\n/* tool bar */\n#tool-bar {\n  width: 525px;\n  margin: 20px auto;\n  text-align: center; }\n\n#search-input {\n  background: url(" + __webpack_require__(4) + ") no-repeat 8px 6px;\n  background-color: #FFF;\n  border-radius: 2px;\n  border-style: none;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  color: #212121;\n  display: block;\n  font-size: 14px;\n  height: 25px;\n  padding: 2px 15px 2px 30px;\n  width: 30%;\n  margin: 20px auto; }\n\nbutton.show-completed-button {\n  display: block;\n  margin: 15px auto;\n  width: 175px; }\n\nbutton.importance-button {\n  background-color: #757575;\n  color: #FFF;\n  margin-left: 5px; }\n  button.importance-button:hover {\n    background-color: #FF4081;\n    color: #212121; }\n  button.importance-button:focus {\n    background-color: #FF4081;\n    color: #212121; }\n\n/* task list */\n.container {\n  background-color: #FFF;\n  box-shadow: 0 5px 24px rgba(0, 0, 0, 0.2);\n  height: 165px;\n  margin: 0 auto 30px;\n  width: 525px; }\n\n.task-text {\n  padding: 30px 35px 0; }\n\n.completed-task {\n  margin-left: 35px; }\n\n.complete {\n  opacity: .5;\n  box-shadow: none; }\n\n.delete-button {\n  background: url(" + __webpack_require__(5) + ") no-repeat;\n  float: right;\n  height: 29px;\n  width: 29px;\n  margin: 20px 5px 0 0; }\n  .delete-button:hover {\n    background: url(" + __webpack_require__(6) + ") no-repeat;\n    box-shadow: none; }\n\n.up-arrow, .down-arrow {\n  height: 16px;\n  width: 16px;\n  margin: 2px; }\n\n.up-arrow {\n  background: url(" + __webpack_require__(7) + ") no-repeat;\n  margin-left: 10px; }\n  .up-arrow:hover {\n    background: url(" + __webpack_require__(8) + ") no-repeat;\n    box-shadow: none; }\n\n.down-arrow {\n  background: url(" + __webpack_require__(9) + ") no-repeat; }\n  .down-arrow:hover {\n    background: url(" + __webpack_require__(10) + ") no-repeat;\n    box-shadow: none; }\n\n.completed-task {\n  width: 110px; }\n\n.task-values {\n  margin-top: 15px; }\n\n.task-importance {\n  display: inline; }\n\n.task-status {\n  visibility: hidden; }\n\n.show-more-button {\n  background-color: #CCC;\n  border: 2px solid #212121;\n  color: #212121;\n  display: block;\n  margin: 20px auto;\n  width: 122px; }\n  .show-more-button:hover {\n    box-shadow: none; }\n", ""]);
+	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/* colors */\n/* color assignments */\n/* fonts */\nbody {\n  background-color: #CCC; }\n\n/* fonts */\nh1, h2, p, button, .input-fields, #search-input {\n  font-family: \"Roboto\", serif; }\n\nh1 {\n  color: #FFF;\n  font-weight: 700;\n  font-size: 40px;\n  letter-spacing: 2px;\n  margin: 40px; }\n  h1 span {\n    font-style: italic; }\n\nh2, p {\n  color: #212121;\n  padding-bottom: 5px; }\n\nh2 {\n  font-size: 24px;\n  font-weight: 400; }\n\np {\n  font-weight: 300;\n  letter-spacing: 0.5px; }\n\n/* main buttons */\nbutton {\n  background-color: #FF4081;\n  border-style: none;\n  border-radius: 2px;\n  color: #212121;\n  font-weight: 400;\n  font-size: 14px;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  width: 93px;\n  height: 36px; }\n  button:hover {\n    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);\n    cursor: pointer; }\n  button:disabled {\n    background-color: rgba(204, 204, 204, 0.12);\n    box-shadow: none;\n    color: #CCC;\n    cursor: auto; }\n\n/* input section */\n.input-section {\n  background-color: #3F51B5;\n  border: 1px solid #757575;\n  box-shadow: 0 2px 4px #757575;\n  height: 350px;\n  text-align: center; }\n\n.input-fields, #character-counter {\n  width: 425px; }\n\n.input-fields {\n  background: transparent;\n  border: none;\n  border-bottom: 2px solid #FF80AB;\n  color: #FFF;\n  display: block;\n  font-weight: 300;\n  font-size: 16px;\n  height: 30px;\n  margin: 30px auto 10px; }\n  .input-fields:placeholder {\n    color: rgba(250, 250, 250, 0.5); }\n\n#character-counter {\n  color: #FFF;\n  margin: 0 auto;\n  text-align: left; }\n\n#save-btn {\n  margin: 20px; }\n\n/* tool bar */\n#tool-bar {\n  width: 525px;\n  margin: 20px auto;\n  text-align: center; }\n\n#search-input {\n  background: url(" + __webpack_require__(4) + ") no-repeat 8px 6px;\n  background-color: #FFF;\n  border-radius: 2px;\n  border-style: none;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\n  color: #212121;\n  display: block;\n  font-size: 14px;\n  height: 25px;\n  padding: 2px 15px 2px 30px;\n  width: 30%;\n  margin: 20px auto; }\n\nbutton.show-completed-button {\n  display: block;\n  margin: 15px auto;\n  width: 175px; }\n\nbutton.importance-button {\n  background-color: #757575;\n  color: #FFF;\n  margin: 10px 0 0 5px; }\n  button.importance-button:hover {\n    background-color: #FF4081;\n    color: #212121; }\n  button.importance-button:focus {\n    background-color: #FF4081;\n    color: #212121; }\n\n/* task list */\n.container {\n  background-color: #FFF;\n  box-shadow: 0 5px 24px rgba(0, 0, 0, 0.2);\n  margin: 0 auto 30px;\n  width: 525px; }\n\n.task-text {\n  padding: 30px 35px 0; }\n\n.completed-task {\n  margin-left: 35px; }\n\n.complete {\n  opacity: .5;\n  box-shadow: none; }\n\n.delete-button {\n  background: url(" + __webpack_require__(5) + ") no-repeat;\n  float: right;\n  height: 29px;\n  width: 29px;\n  margin: 20px 5px 0 0; }\n  .delete-button:hover {\n    background: url(" + __webpack_require__(6) + ") no-repeat;\n    box-shadow: none; }\n\n.up-arrow, .down-arrow {\n  height: 16px;\n  width: 16px;\n  margin: 2px; }\n\n.up-arrow {\n  background: url(" + __webpack_require__(7) + ") no-repeat;\n  margin-left: 10px; }\n  .up-arrow:hover {\n    background: url(" + __webpack_require__(8) + ") no-repeat;\n    box-shadow: none; }\n\n.down-arrow {\n  background: url(" + __webpack_require__(9) + ") no-repeat; }\n  .down-arrow:hover {\n    background: url(" + __webpack_require__(10) + ") no-repeat;\n    box-shadow: none; }\n\n.completed-task {\n  width: 110px; }\n\n.task-values {\n  margin-top: 15px; }\n\n.task-importance {\n  display: inline; }\n\n.task-status {\n  visibility: hidden; }\n\n.show-more-button {\n  background-color: #CCC;\n  border: 2px solid #212121;\n  color: #212121;\n  display: block;\n  margin: 20px auto;\n  width: 122px; }\n  .show-more-button:hover {\n    box-shadow: none; }\n\n@media screen and (max-width: 565px) {\n  #tool-bar {\n    width: 450px; }\n  #search-input {\n    width: 50%; }\n  .container {\n    width: 450px; } }\n\n@media screen and (max-width: 490px) {\n  .input-fields {\n    width: 320px; }\n  #character-counter {\n    width: 320px; }\n  #tool-bar {\n    width: 320px; }\n  .container {\n    width: 320px; }\n  .task-text {\n    padding: 30px 20px 0; }\n  .completed-task {\n    display: block;\n    margin-left: 20px;\n    margin-bottom: 15px; }\n  .up-arrow {\n    margin-left: 20px; } }\n\n@media screen and (max-width: 370px) {\n  h1 {\n    font-size: 35px; }\n  .input-fields {\n    width: 290px; }\n  #character-counter {\n    width: 290px; }\n  #tool-bar {\n    width: 290px; }\n  .container {\n    width: 290px; } }\n", ""]);
 
 	// exports
 
@@ -441,256 +441,23 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var $ = __webpack_require__(13);
+	var Task = __webpack_require__(14);
+	var taskBox = __webpack_require__(15);
 
 	var $titleInput = $('#title-input');
 	var $bodyInput = $('#body-input');
 
+	var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
+
 	$(document).ready(function () {
-	  TaskBox.getTaskFromLocalStorage();
-	  TaskBox.renderStoredTasksToPage();
+	  taskBox.getTaskFromLocalStorage();
+	  taskBox.renderStoredTasksToPage();
 	});
 
 	function clearInputFields() {
 	  $titleInput.val('');
 	  $bodyInput.val('');
 	}
-
-	var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
-
-	function Task(title, body, id, importance, status) {
-	  this.title = title;
-	  this.body = body;
-	  this.id = id || Date.now();
-	  this.importance = importance || votes[2];
-	  this.status = status || "incomplete";
-	}
-
-	var TaskBox = {
-	  tasksArray: [],
-	  completedTasksArray: [],
-
-	  generateTask: function () {
-	    var task = new Task($titleInput.val(), $bodyInput.val());
-	    this.saveTaskInArray(task);
-	    this.renderTaskToPage(task);
-	    this.saveToLocalStorage();
-	  },
-
-	  saveTaskInArray: function (task) {
-	    this.tasksArray.push(task);
-	  },
-
-	  hideCompletedTasks: function (task) {
-	    if (task.status === "completed") {
-	      $(this).parent().attr("visibility", "hidden");
-	    }
-	  },
-
-	  renderTaskToPage: function (task) {
-	    $('.task-list').prepend(`
-	    <section id=${ task.id } class="container">
-
-	    <button class="delete-button" aria-label="Delete"></button>
-
-	    <article class="task-text">
-	      <h2 contenteditable=true class="task-title">${ task.title }</h2>
-	      <p contenteditable=true class="task-body">${ task.body }</p>
-	    </article>
-
-	    <article class="task-values">
-	      <button class="completed-task" aria-label="Mark complete">Completed</button>
-	      <button class="up-arrow" aria-label="Increase importance"></button>
-	      <button class="down-arrow" aria-label="Decrease importance"></button>
-	      <p class="importance-text task-importance" tabindex="0" >Importance:</p>
-	      <p class="task-importance importance-value" tabindex="0">${ task.importance }</p>
-	    </article>
-
-	    <p class="task-status">${ task.status }</p>
-	    
-	    </section>`);
-	  },
-
-	  saveToLocalStorage: function () {
-	    localStorage.setItem('tasksArray', JSON.stringify(this.tasksArray));
-	    localStorage.setItem('completedTasksArray', JSON.stringify(this.completedTasksArray));
-	  },
-
-	  getTaskFromLocalStorage: function () {
-	    var storedTasksArray = JSON.parse(localStorage.getItem('tasksArray'));
-	    var storedCompletedTasks = JSON.parse(localStorage.getItem('completedTasksArray'));
-	    if (storedTasksArray) {
-	      this.tasksArray = storedTasksArray.map(function (task) {
-	        return new Task(task.title, task.body, task.id, task.importance, task.status);
-	      });
-	    }
-	    if (storedCompletedTasks) {
-	      this.completedTasksArray = storedCompletedTasks.map(function (task) {
-	        return new Task(task.title, task.body, task.id, task.importance, task.status);
-	      });
-	    }
-	  },
-
-	  renderStoredTasksToPage: function () {
-	    var smallArray = this.tasksArray.slice(-10, this.tasksArray.length);
-	    smallArray.forEach(function (task) {
-	      TaskBox.renderTaskToPage(task);
-	    });
-	  },
-
-	  renderMoreTasks: function () {
-	    this.tasksArray.forEach(function (task) {
-	      TaskBox.renderTaskToPage(task);
-	    });
-	  },
-
-	  renderCompletedTasksToPage: function () {
-	    this.completedTasksArray.forEach(function (task) {
-	      TaskBox.renderTaskToPage(task);
-	    });
-	  },
-
-	  deleteTaskFromPage: function (id) {
-	    id = +id;
-	    this.tasksArray = this.tasksArray.filter(function (tasks) {
-	      return tasks.id !== id;
-	    });
-	    this.saveToLocalStorage();
-	  },
-
-	  saveEditedTitle: function (id, newTitle) {
-	    id = +id;
-	    this.tasksArray.forEach(function (tasks) {
-	      if (tasks.id === id) {
-	        tasks.title = newTitle;
-	      }
-	    });
-	    this.saveToLocalStorage();
-	  },
-
-	  saveEditedTask: function (id, newBody) {
-	    id = +id;
-	    this.tasksArray.forEach(function (tasks) {
-	      if (tasks.id === id) {
-	        tasks.body = newBody;
-	      }
-	    });
-	    this.saveToLocalStorage();
-	  },
-
-	  saveImportanceValue: function (id, newImportance) {
-	    id = +id;
-	    this.tasksArray.forEach(function (tasks) {
-	      if (tasks.id === id) {
-	        tasks.importance = newImportance;
-	      }
-	    });
-	    this.saveToLocalStorage();
-	  },
-
-	  saveTaskInNewArray: function (task) {
-	    this.completedTasksArray.push(task);
-	  },
-
-	  markComplete: function (id, newStatus) {
-	    id = +id;
-	    this.tasksArray.forEach(function (tasks) {
-	      if (tasks.id === id) {
-	        tasks.status = newStatus;
-	        TaskBox.saveTaskInNewArray(tasks);
-	      }
-	    });
-	    this.deleteTaskFromPage(id);
-	    this.saveToLocalStorage();
-	  }
-
-	};
-
-	function enableSubmit() {
-	  if ($bodyInput.val().length > 0 && $titleInput.val().length > 0) {
-	    $("#save-btn").attr("disabled", false);
-	  } else {
-	    $("#save-btn").attr("disabled", true);
-	  }
-	}
-
-	$titleInput.on('keyup', function () {
-	  enableSubmit();
-	});
-
-	$bodyInput.on('keyup', function () {
-	  var characterCount = $bodyInput.val().length;
-	  $('#counter').text(characterCount);
-	  if (characterCount > 120) {
-	    $("#save-btn").attr("disabled", true);
-	    $('#character-counter').text('Character limit exceeded!');
-	  } else if (characterCount < 120) {
-	    resetCharacterCount();
-	    enableSubmit();
-	  }
-	});
-
-	function resetCharacterCount() {
-	  var characterCount = $bodyInput.val().length;
-	  $('#character-counter').text('Character Count: ' + characterCount + "/120");
-	}
-
-	$('.show-more-button').on('click', function () {
-	  $('.task-list').children().remove();
-	  TaskBox.renderMoreTasks();
-	});
-
-	$('#save-btn').on('click', function () {
-	  TaskBox.generateTask();
-	  if ($('.task-list').children().length > 10) {
-	    $('.task-list').children(":last-child").hide();
-	  }
-	  clearInputFields();
-	  resetCharacterCount();
-	  $("#save-btn").attr("disabled", true);
-	});
-
-	$('.show-completed-button').on('click', function () {
-	  TaskBox.renderCompletedTasksToPage();
-	});
-
-	$('.task-list').on('click', '.delete-button', function () {
-	  var taskId = $(this).parent().attr('id');
-	  TaskBox.deleteTaskFromPage(taskId);
-	  $(this).parent().remove();
-	});
-
-	$('.task-list').on('keyup', '.task-title', function (task) {
-	  var newTitle = $(this).text();
-	  var taskId = $(this).parent().parent().attr('id');
-	  TaskBox.saveEditedTitle(taskId, newTitle);
-	});
-
-	$('.task-list').on('keyup', '.task-body', function (task) {
-	  var newBody = $(this).text();
-	  var taskId = $(this).parent().parent().attr('id');
-	  TaskBox.saveEditedTask(taskId, newBody);
-	});
-
-	$('.task-list').on('click', '.completed-task', function (task) {
-	  var taskId = $(this).parent().parent().attr('id');
-	  var newStatus = "complete";
-	  $(this).parent().parent().removeClass('incomplete').addClass('complete');
-	  TaskBox.markComplete(taskId, newStatus);
-	});
-
-	$('.task-list').on('click', '.up-arrow', function (task) {
-	  var taskId = $(this).parent().parent().attr('id');
-	  updateImportance(this, increaseImportance(this));
-	  var newImportance = $(this).siblings('.importance-value').text();
-	  TaskBox.saveImportanceValue(taskId, newImportance);
-	});
-
-	$('.task-list').on('click', '.down-arrow', function (task) {
-	  var taskId = $(this).parent().parent().attr('id');
-	  updateImportance(this, decreaseImportance(this));
-	  var newImportance = $(this).siblings('.importance-value').text();
-	  TaskBox.saveImportanceValue(taskId, newImportance);
-	});
 
 	function updateImportance(e, value) {
 	  $(e).siblings('.importance-value').text(value);
@@ -709,6 +476,94 @@
 	  arrayNumber++;
 	  return votes[arrayNumber];
 	}
+
+	function enableSubmit() {
+	  if ($bodyInput.val().length > 0 && $titleInput.val().length > 0) {
+	    $("#save-btn").attr("disabled", false);
+	  } else {
+	    $("#save-btn").attr("disabled", true);
+	  }
+	}
+
+	function resetCharacterCount() {
+	  var characterCount = $bodyInput.val().length;
+	  $('#character-counter').text('Character Count: ' + characterCount + "/120");
+	}
+
+	$titleInput.on('keyup', function () {
+	  enableSubmit();
+	});
+
+	$bodyInput.on('keyup', function () {
+	  var characterCount = $bodyInput.val().length;
+	  $('#counter').text(characterCount);
+	  if (characterCount > 120) {
+	    $("#save-btn").attr("disabled", true);
+	    $('#character-counter').text('Character limit exceeded!');
+	  } else if (characterCount < 120) {
+	    resetCharacterCount();
+	    enableSubmit();
+	  }
+	});
+
+	$('#save-btn').on('click', function () {
+	  taskBox.generateTask();
+	  if ($('.task-list').children().length > 10) {
+	    $('.task-list').children(":last-child").hide();
+	  }
+	  clearInputFields();
+	  resetCharacterCount();
+	  $("#save-btn").attr("disabled", true);
+	});
+
+	$('.show-more-button').on('click', function () {
+	  $('.task-list').children().remove();
+	  taskBox.renderMoreTasks();
+	});
+
+	$('.show-completed-button').on('click', function () {
+	  taskBox.renderCompletedTasksToPage();
+	});
+
+	$('.task-list').on('click', '.delete-button', function () {
+	  var taskId = $(this).parent().attr('id');
+	  taskBox.deleteTaskFromPage(taskId);
+	  taskBox.deleteCompletedTask(taskId);
+	  $(this).parent().remove();
+	});
+
+	$('.task-list').on('keyup', '.task-title', function (task) {
+	  var newTitle = $(this).text();
+	  var taskId = $(this).parent().parent().attr('id');
+	  taskBox.saveEditedTitle(taskId, newTitle);
+	});
+
+	$('.task-list').on('keyup', '.task-body', function (task) {
+	  var newBody = $(this).text();
+	  var taskId = $(this).parent().parent().attr('id');
+	  taskBox.saveEditedTask(taskId, newBody);
+	});
+
+	$('.task-list').on('click', '.completed-task', function (task) {
+	  var taskId = $(this).parent().parent().attr('id');
+	  var newStatus = "complete";
+	  $(this).parent().parent().removeClass('incomplete').addClass('complete');
+	  taskBox.markComplete(taskId, newStatus);
+	});
+
+	$('.task-list').on('click', '.up-arrow', function (task) {
+	  var taskId = $(this).parent().parent().attr('id');
+	  updateImportance(this, increaseImportance(this));
+	  var newImportance = $(this).siblings('.importance-value').text();
+	  taskBox.saveImportanceValue(taskId, newImportance);
+	});
+
+	$('.task-list').on('click', '.down-arrow', function (task) {
+	  var taskId = $(this).parent().parent().attr('id');
+	  updateImportance(this, decreaseImportance(this));
+	  var newImportance = $(this).siblings('.importance-value').text();
+	  taskBox.saveImportanceValue(taskId, newImportance);
+	});
 
 	$('#search-input').on('keyup', function () {
 	  var filter = $(this).val();
@@ -2381,6 +2236,183 @@
 	// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 	// and CommonJS for browser emulators (#13566)
 	if(!noGlobal){window.jQuery=window.$=jQuery;}return jQuery;});
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $ = __webpack_require__(13);
+
+	var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
+
+	function Task(title, body, id, importance, status) {
+	  this.title = title;
+	  this.body = body;
+	  this.id = id || Date.now();
+	  this.importance = importance || votes[2];
+	  this.status = status || "incomplete";
+	}
+
+	module.exports = Task;
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Task = __webpack_require__(14);
+
+	var $titleInput = $('#title-input');
+	var $bodyInput = $('#body-input');
+
+	var votes = ['None', 'Low', 'Normal', 'High', 'Critical'];
+
+	var TaskBox = {
+	  tasksArray: [],
+	  completedTasksArray: [],
+
+	  generateTask: function () {
+	    var task = new Task($titleInput.val(), $bodyInput.val());
+	    this.saveTaskInArray(task);
+	    this.renderTaskToPage(task);
+	    this.saveToLocalStorage();
+	  },
+
+	  saveTaskInArray: function (task) {
+	    this.tasksArray.push(task);
+	  },
+
+	  renderTaskToPage: function (task) {
+	    $('.task-list').prepend(`
+	      <section id=${ task.id } class="container">
+
+	      <button class="delete-button" aria-label="Delete"></button>
+
+	      <article class="task-text">
+	      <h2 contenteditable=true class="task-title">${ task.title }</h2>
+	      <p contenteditable=true class="task-body">${ task.body }</p>
+	      </article>
+
+	      <article class="task-values">
+	      <button class="completed-task" aria-label="Mark complete">Completed</button>
+	      <button class="up-arrow" aria-label="Increase importance"></button>
+	      <button class="down-arrow" aria-label="Decrease importance"></button>
+	      <p class="importance-text task-importance" tabindex="0" >Importance:</p>
+	      <p class="task-importance importance-value" tabindex="0">${ task.importance }</p>
+	      </article>
+
+	      <p class="task-status">${ task.status }</p>
+
+	      </section>`);
+	  },
+
+	  saveToLocalStorage: function () {
+	    localStorage.setItem('tasksArray', JSON.stringify(this.tasksArray));
+	    localStorage.setItem('completedTasksArray', JSON.stringify(this.completedTasksArray));
+	  },
+
+	  getTaskFromLocalStorage: function () {
+	    var storedTasksArray = JSON.parse(localStorage.getItem('tasksArray'));
+	    var storedCompletedTasks = JSON.parse(localStorage.getItem('completedTasksArray'));
+	    if (storedTasksArray) {
+	      this.tasksArray = storedTasksArray.map(function (task) {
+	        return new Task(task.title, task.body, task.id, task.importance, task.status);
+	      });
+	    }
+	    if (storedCompletedTasks) {
+	      this.completedTasksArray = storedCompletedTasks.map(function (task) {
+	        return new Task(task.title, task.body, task.id, task.importance, task.status);
+	      });
+	    }
+	  },
+
+	  renderStoredTasksToPage: function () {
+	    var smallArray = this.tasksArray.slice(-10, this.tasksArray.length);
+	    smallArray.forEach(function (task) {
+	      TaskBox.renderTaskToPage(task);
+	    });
+	  },
+
+	  renderMoreTasks: function () {
+	    this.tasksArray.forEach(function (task) {
+	      TaskBox.renderTaskToPage(task);
+	    });
+	  },
+
+	  renderCompletedTasksToPage: function () {
+	    this.completedTasksArray.forEach(function (task) {
+	      TaskBox.renderTaskToPage(task);
+	    });
+	  },
+
+	  findUniqueId: function (id) {
+	    uniqueId = +id;
+	  },
+
+	  deleteTaskFromPage: function (id) {
+	    this.findUniqueId(id);
+	    this.tasksArray = this.tasksArray.filter(function (tasks) {
+	      return tasks.id !== uniqueId;
+	    });
+	    this.saveToLocalStorage();
+	  },
+
+	  deleteCompletedTask: function (id) {
+	    this.findUniqueId(id);
+	    this.completedTasksArray = this.completedTasksArray.filter(function (tasks) {
+	      return tasks.id !== uniqueId;
+	    });
+	    this.saveToLocalStorage();
+	  },
+
+	  saveEditedTitle: function (id, newTitle) {
+	    this.findUniqueId(id);
+	    this.tasksArray.forEach(function (tasks) {
+	      if (tasks.id === uniqueId) {
+	        tasks.title = newTitle;
+	      }
+	    });
+	    this.saveToLocalStorage();
+	  },
+
+	  saveEditedTask: function (id, newBody) {
+	    this.findUniqueId(id);
+	    this.tasksArray.forEach(function (tasks) {
+	      if (tasks.id === uniqueId) {
+	        tasks.body = newBody;
+	      }
+	    });
+	    this.saveToLocalStorage();
+	  },
+
+	  saveImportanceValue: function (id, newImportance) {
+	    this.findUniqueId(id);
+	    this.tasksArray.forEach(function (tasks) {
+	      if (tasks.id === uniqueId) {
+	        tasks.importance = newImportance;
+	      }
+	    });
+	    this.saveToLocalStorage();
+	  },
+
+	  saveTaskInNewArray: function (task) {
+	    this.completedTasksArray.push(task);
+	  },
+
+	  markComplete: function (id, newStatus) {
+	    this.findUniqueId(id);
+	    this.tasksArray.forEach(function (tasks) {
+	      if (tasks.id === uniqueId) {
+	        tasks.status = newStatus;
+	        TaskBox.saveTaskInNewArray(tasks);
+	      }
+	    });
+	    this.deleteTaskFromPage(id);
+	    this.saveToLocalStorage();
+	  }
+
+	};
+
+	module.exports = TaskBox;
 
 /***/ }
 /******/ ]);
