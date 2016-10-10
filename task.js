@@ -10,5 +10,4 @@ function Task (title, body, id, importance, status) {
   this.status = status || "incomplete";
 }
 
-module.exports = votes;
 module.exports = Task;

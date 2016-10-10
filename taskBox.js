@@ -20,41 +20,34 @@ var TaskBox = {
     this.tasksArray.push(task);
   },
 
-  hideCompletedTasks: function(task) {
-    if(task.status === "completed") {
-      $(this).parent().attr("visibility", "hidden");
-    }
-  },
-
   renderTaskToPage: function(task) {
     $('.task-list').prepend(`
-    <section id=${task.id} class="container">
+      <section id=${task.id} class="container">
 
-    <button class="delete-button" aria-label="Delete"></button>
+      <button class="delete-button" aria-label="Delete"></button>
 
-    <article class="task-text">
+      <article class="task-text">
       <h2 contenteditable=true class="task-title">${task.title}</h2>
       <p contenteditable=true class="task-body">${task.body}</p>
-    </article>
+      </article>
 
-    <article class="task-values">
+      <article class="task-values">
       <button class="completed-task" aria-label="Mark complete">Completed</button>
       <button class="up-arrow" aria-label="Increase importance"></button>
       <button class="down-arrow" aria-label="Decrease importance"></button>
       <p class="importance-text task-importance" tabindex="0" >Importance:</p>
       <p class="task-importance importance-value" tabindex="0">${task.importance}</p>
-    </article>
+      </article>
 
-    <p class="task-status">${task.status}</p>
+      <p class="task-status">${task.status}</p>
 
-    </section>`);
+      </section>`);
   },
 
   saveToLocalStorage: function() {
     localStorage.setItem('tasksArray', JSON.stringify(this.tasksArray));
     localStorage.setItem('completedTasksArray', JSON.stringify(this.completedTasksArray));
   },
-
 
   getTaskFromLocalStorage: function() {
     var storedTasksArray = JSON.parse(localStorage.getItem('tasksArray'));
@@ -90,46 +83,50 @@ var TaskBox = {
     });
   },
 
+  findUniqueId: function(id) {
+    uniqueId = +id;
+  },
+
   deleteTaskFromPage: function(id) {
-    id = +id;
+    this.findUniqueId(id);
     this.tasksArray = this.tasksArray.filter(function(tasks) {
-      return tasks.id !== id;
+      return tasks.id !== uniqueId;
     });
     this.saveToLocalStorage();
   },
 
   deleteCompletedTask: function(id) {
-    id = +id;
+    this.findUniqueId(id);
     this.completedTasksArray = this.completedTasksArray.filter(function(tasks) {
-      return tasks.id !== id;
+      return tasks.id !== uniqueId;
     });
     this.saveToLocalStorage();
   },
 
-    saveEditedTitle: function(id, newTitle) {
-     id = +id;
-     this.tasksArray.forEach(function(tasks) {
-       if (tasks.id === id) {
-         tasks.title = newTitle;
-       }
-     });
-     this.saveToLocalStorage();
-   },
+  saveEditedTitle: function(id, newTitle) {
+  this.findUniqueId(id);
+  this.tasksArray.forEach(function(tasks) {
+   if (tasks.id === uniqueId) {
+     tasks.title = newTitle;
+   }
+   });
+   this.saveToLocalStorage();
+  },
 
-   saveEditedTask: function(id, newBody) {
-    id = +id;
-    this.tasksArray.forEach(function(tasks) {
-      if (tasks.id === id) {
-        tasks.body = newBody;
-      }
-    });
-    this.saveToLocalStorage();
+ saveEditedTask: function(id, newBody) {
+  this.findUniqueId(id);
+  this.tasksArray.forEach(function(tasks) {
+    if (tasks.id === uniqueId) {
+      tasks.body = newBody;
+    }
+  });
+  this.saveToLocalStorage();
   },
 
   saveImportanceValue: function(id, newImportance) {
-    id = +id;
+    this.findUniqueId(id);
     this.tasksArray.forEach(function(tasks) {
-      if (tasks.id === id) {
+      if (tasks.id === uniqueId) {
         tasks.importance = newImportance;
       }
     });
@@ -141,9 +138,9 @@ var TaskBox = {
   },
 
   markComplete: function(id, newStatus) {
-    id = +id;
+    this.findUniqueId(id);
     this.tasksArray.forEach(function(tasks) {
-      if (tasks.id === id) {
+      if (tasks.id === uniqueId) {
         tasks.status = newStatus;
         TaskBox.saveTaskInNewArray(tasks);
       }
